@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+<h2>Infos:</h2>
+
+<table class="table">
+
+  <tr>
+    <th>Name</th>
+    <td>{{ page.rdf | rdf_property: '<http://www.w3.org/2000/01/rdf-schema#label>' }}</td>
+  </tr>
+
+  <tr>
+    <th>Instructor</th>
+    <td>{{ page.rdf | rdf_property: '<https://schema.org/accountablePerson>' }}</td>
+  </tr> 
+  
+  <tr>
+    <th>URL</th>
+    <td><a href="{{ page.rdf | rdf_property: '<https://schema.org/url>' }}">{{ page.rdf | rdf_property: '<https://schema.org/url>' }}</a></td>
+  </tr>
+  
+  <tr>
+    <th>Lernergebnisse</th>
+	<td>
+	{% capture listelements_query %}
+	SELECT DISTINCT ?listelements WHERE {
+		?resourceUri <https://schema.org/about> ?itemlist.
+		?itemlist a <https://schema.org/ItemList>;
+		<https://schema.org/itemListElement> ?listelements.
+	}
+	{% endcapture %}
+	{% assign listelements = page.rdf | sparql_query: listelements_query %}
+	{% for result in listelements %}
+    {{result.listelements}}<br />
+	{% endfor %}
+	</td>
+  </tr>
+  
+</table>

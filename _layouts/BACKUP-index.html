@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+  
+<h1>Lectures:</h1>
+
+<table class="table">
+	
+    {% assign query = 'SELECT DISTINCT ?course WHERE { ?course a <https://schema.org/Course> . } ' %}
+    {% assign resultset = page.rdf | sparql_query: query %}
+      {% for result in resultset %}
+	  <tr><td><a href="{{ result.course | remove: 'https://bmake.th-brandenburg.de' }}.html">{{ result.course | rdf_property: '<http://www.w3.org/2000/01/rdf-schema#label>' }}</a></td></tr>
+	  {% endfor %}
+	
+</table>
+
+ 
