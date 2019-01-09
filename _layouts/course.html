@@ -50,10 +50,10 @@ layout: default
 
 <h5>Informationen zum Modul:</h5>
 
-    <button id="exportButton" class="btn btn-lg btn-danger clearfix"><span class="fa fa-file-pdf-o"></span> Export to PDF</button>
+ 
 
 
-<table class="table" id="exportTable">
+<table class="table">
 
 
     <tr>
@@ -75,13 +75,13 @@ layout: default
     </td></tr>
 
     <tr>
-        <th>Aufteilung in Lehrveranstaltungen</th><td>
+        <th>Aufteilung in Lehrveranstaltungen</th><ul><td>
         {% assign tests = page.rdf | rdf_property: '<https://schema.org/learningResourceType>', nil, true %}
 
         {% for res in tests %}
-        {{res}}<br />
-        {% endfor %}
-    </td></tr>
+        <li> {{res}}<br /></li>
+       {% endfor %}
+    </td></ul></tr>
 
     <tr>
         <th>Dauer des Moduls</th>
@@ -102,35 +102,35 @@ layout: default
 
     <tr>
         <th>Zuordnung zum Curriculum</th><td>
-			
-	            {% capture modultyp_query %}
-	            SELECT DISTINCT ?modultyp  WHERE {
-	        ?resourceUri <https://schema.org/educationalAlignment> ?alignment.
-	        ?alignment a <https://schema.org/AlignmentObject>;
-			<https://schema.org/alignmentType> ?alignmentType;
-	        <https://schema.org/targetName> ?modultyp.
-			FILTER (regex(?alignmentType, "Modultyp", "i")).
-	        }
-	            {% endcapture %}
-	            {% assign listelements = page.rdf | sparql_query: modultyp_query %}
-	            {% for result in listelements %}
-	            {{result.modultyp}}<br />
-	            {% endfor %}
-			
-	            {% capture alignment_query %}
-	            SELECT DISTINCT ?curriculum  WHERE {
-	        ?resourceUri <https://schema.org/educationalAlignment> ?alignment.
-	        ?alignment a <https://schema.org/AlignmentObject>;
-			<https://schema.org/alignmentType> ?alignmentType;
-	        <https://schema.org/targetDescription> ?curriculum.
-			FILTER (regex(?alignmentType, "Zuordnung zum Curriculum", "i")).
-	        }
-	            {% endcapture %}
-	            {% assign listelements = page.rdf | sparql_query: alignment_query %}
-	            {% for result in listelements %}
-	            {{result.curriculum}}<br />
-	            {% endfor %} 
-				
+            
+                {% capture modultyp_query %}
+                SELECT DISTINCT ?modultyp  WHERE {
+            ?resourceUri <https://schema.org/educationalAlignment> ?alignment.
+            ?alignment a <https://schema.org/AlignmentObject>;
+            <https://schema.org/alignmentType> ?alignmentType;
+            <https://schema.org/targetName> ?modultyp.
+            FILTER (regex(?alignmentType, "Modultyp", "i")).
+            }
+                {% endcapture %}
+                {% assign listelements = page.rdf | sparql_query: modultyp_query %}
+                {% for result in listelements %}
+                {{result.modultyp}}<br />
+                {% endfor %}
+            
+                {% capture alignment_query %}
+                SELECT DISTINCT ?curriculum  WHERE {
+            ?resourceUri <https://schema.org/educationalAlignment> ?alignment.
+            ?alignment a <https://schema.org/AlignmentObject>;
+            <https://schema.org/alignmentType> ?alignmentType;
+            <https://schema.org/targetDescription> ?curriculum.
+            FILTER (regex(?alignmentType, "Zuordnung zum Curriculum", "i")).
+            }
+                {% endcapture %}
+                {% assign listelements = page.rdf | sparql_query: alignment_query %}
+                {% for result in listelements %}
+                {{result.curriculum}}<br />
+                {% endfor %} 
+                
     </td></tr>
 
     <tr>
@@ -185,32 +185,32 @@ layout: default
     </td></tr>
 
     <tr>
-        <th>Gesamtworkload und ihre Zusammensetzung</th>
+        <th>Gesamtworkload und ihre Zusammensetzung</th><ul>
         <td>{% assign tests = page.rdf | rdf_property: '<https://schema.org/timeRequired>', nil, true %}
 
             {% for res in tests %}
-            {{res}}<br />
+            <li>{{res}}<br /></li>
             {% endfor %}
 
             {% capture workload_query %}
             SELECT DISTINCT ?name ?value WHERE {
             ?resourceUri <https://schema.org/additionalProperty> ?propertyvalue.
-			?propertyvalue a <https://schema.org/PropertyValue>;
-			<https://schema.org/identifier> ?identifier;
-			<https://schema.org/valueReference> ?valueReference.
-			FILTER regex(?identifier, "Workload", "i").
+            ?propertyvalue a <https://schema.org/PropertyValue>;
+            <https://schema.org/identifier> ?identifier;
+            <https://schema.org/valueReference> ?valueReference.
+            FILTER regex(?identifier, "Workload", "i").
             ?valueReference a  <https://schema.org/PropertyValue>;
-			<https://schema.org/name> ?name;	
-			<https://schema.org/value> ?value.
-			
+            <https://schema.org/name> ?name;    
+            <https://schema.org/value> ?value.
+            
             }
             ORDER BY ASC(?name)
             {% endcapture %}
             {% assign listelements = page.rdf | sparql_query: workload_query %}
             {% for result in listelements %}
-            {{result.name}}<br />
+            <li>{{result.name}}<br /></li>
             {% endfor %}
-        </td>
+        </td></ul>
     </tr>
 
     <tr>
@@ -219,7 +219,7 @@ layout: default
     </td></tr>
 
     <tr>
-        <th>Studien-/Prüfungsleistungen</th>
+        <th>Studien-/Prüfungsleistungen</th><ul>
         <td>
             {% capture listelements_query %}
             SELECT DISTINCT ?listelements WHERE {
@@ -233,31 +233,31 @@ layout: default
             {% endcapture %}
             {% assign listelements = page.rdf | sparql_query: listelements_query %}
             {% for result in listelements %}
-            {{result.listelements}}<br />
+            <li>{{result.listelements}}<br /></li>
             {% endfor %}
-        </td>
+        </td><ul>
     </tr>
 
     <tr>
         <th>Gewichtung der Note in der Gesamtnote</th><td>
-	            {% capture grade_query %}
-	            SELECT DISTINCT ?grade  WHERE {
-	        ?resourceUri <https://schema.org/educationalAlignment> ?alignment.
-	        ?alignment a <https://schema.org/AlignmentObject>;
-			<https://schema.org/alignmentType> ?alignmentType;
-	        <https://schema.org/targetName> ?grade.
-			FILTER (regex(?alignmentType, "Gewichtung der Note", "i")).
-	        }
-	            {% endcapture %}
-	            {% assign listelements = page.rdf | sparql_query: grade_query %}
-	            {% for result in listelements %}
-	            {{result.grade}}<br />
-	            {% endfor %} 
+                {% capture grade_query %}
+                SELECT DISTINCT ?grade  WHERE {
+            ?resourceUri <https://schema.org/educationalAlignment> ?alignment.
+            ?alignment a <https://schema.org/AlignmentObject>;
+            <https://schema.org/alignmentType> ?alignmentType;
+            <https://schema.org/targetName> ?grade.
+            FILTER (regex(?alignmentType, "Gewichtung der Note", "i")).
+            }
+                {% endcapture %}
+                {% assign listelements = page.rdf | sparql_query: grade_query %}
+                {% for result in listelements %}
+                {{result.grade}}<br />
+                {% endfor %} 
     </td></tr>
 
     <tr>
         <th>Lernergebnisse</th>
-        <td>
+        <td><ul>
             {% capture listelements_query %}
             SELECT DISTINCT ?listelements WHERE {
             ?resourceUri <https://schema.org/about> ?itemlist.
@@ -270,9 +270,9 @@ layout: default
             {% endcapture %}
             {% assign listelements = page.rdf | sparql_query: listelements_query %}
             {% for result in listelements %}
-            {{result.listelements}}<br />
+            <li>{{result.listelements}}<br /></li>
             {% endfor %}
-        </td>
+        </td></ul>
     </tr>
 
     <tr>
@@ -296,13 +296,13 @@ layout: default
     </tr>
 
     <tr>
-        <th>Lehr- und Lernmethoden</th><td>
+        <th>Lehr- und Lernmethoden</th><ul><td>
         {% assign tests = page.rdf | rdf_property: '<https://schema.org/interactivityType>', nil, true %}
 
         {% for res in tests %}
-        {{res}}<br />
+        <li>{{res}}<br /></li>
         {% endfor %}
-    </td></tr>
+    </td></ul></tr>
 
     <tr>
         <th>Literatur</th>
@@ -353,66 +353,6 @@ layout: default
 <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
 <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
 <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/jszip.min.js"></script>
-
-<script type="text/javascript">
-    jQuery(function ($) {
-        $("#exportButton").click(function () {
-            // parse the HTML table element having an id=exportTable
-            var dataSource = shield.DataSource.create({
-                data: "#exportTable",
-                schema: {
-                    type: "table",
-                    fields: {
-                        Name: { type: String },
-                        Instructor: { type: String },
-                        URL: { type: String },
-                        Lernergebnisse: { type: String }
-                    }
-                }
-            });
-
-            // when parsing is done, export the data to PDF
-            dataSource.read().then(function (data) {
-                var pdf = new shield.exp.PDFDocument({
-                    author: "Potti",
-                    created: new Date()
-                });
-
-                pdf.addPage("a4", "portrait");
-
-                pdf.table(
-                    50,
-                    50,
-                    data,
-                    [
-                        { field: "Name", title: "Name", width: 200 },
-                        { field: "Instructor", title: "Instructor", width: 50 },
-                        { field: "URL", title: "URL", width: 50 },
-                        { field: "Lernergebnisse", title: "Lernergebnisse", width: 200 }
-                    ],
-                    {
-                        margins: {
-                            top: 50,
-                            left: 50
-                        }
-                    }
-                );
-
-                pdf.saveAs({
-                    fileName: "PrepBootstrapPDF"
-                });
-            });
-        });
-    });
-</script>
-
-
-
-
-
-
-
-
 
      </body>
 
