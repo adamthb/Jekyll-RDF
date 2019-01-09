@@ -93,13 +93,44 @@ layout: default
         <https://schema.org/duration> ?duration.
         }
             {% endcapture %}
-
+            {% assign listelements = page.rdf | sparql_query: duration_query %}
+            {% for result in listelements %}
+            {{result.duration}}<br />
+            {% endfor %}
 
         </td></tr>
 
     <tr>
         <th>Zuordnung zum Curriculum</th><td>
-
+			
+	            {% capture modultyp_query %}
+	            SELECT DISTINCT ?modultyp  WHERE {
+	        ?resourceUri <https://schema.org/educationalAlignment> ?alignment.
+	        ?alignment a <https://schema.org/AlignmentObject>;
+			<https://schema.org/alignmentType> ?alignmentType;
+	        <https://schema.org/targetName> ?modultyp.
+			FILTER (regex(?alignmentType, "Modultyp", "i")).
+	        }
+	            {% endcapture %}
+	            {% assign listelements = page.rdf | sparql_query: modultyp_query %}
+	            {% for result in listelements %}
+	            {{result.modultyp}}<br />
+	            {% endfor %}
+			
+	            {% capture alignment_query %}
+	            SELECT DISTINCT ?curriculum  WHERE {
+	        ?resourceUri <https://schema.org/educationalAlignment> ?alignment.
+	        ?alignment a <https://schema.org/AlignmentObject>;
+			<https://schema.org/alignmentType> ?alignmentType;
+	        <https://schema.org/targetDescription> ?curriculum.
+			FILTER (regex(?alignmentType, "Zuordnung zum Curriculum", "i")).
+	        }
+	            {% endcapture %}
+	            {% assign listelements = page.rdf | sparql_query: alignment_query %}
+	            {% for result in listelements %}
+	            {{result.curriculum}}<br />
+	            {% endfor %} 
+				
     </td></tr>
 
     <tr>
@@ -161,17 +192,23 @@ layout: default
             {{res}}<br />
             {% endfor %}
 
-            {% capture listelements_query %}
-            SELECT DISTINCT ?listelements WHERE {
+            {% capture workload_query %}
+            SELECT DISTINCT ?name ?value WHERE {
             ?resourceUri <https://schema.org/additionalProperty> ?propertyvalue.
-            ?itemlist a <https://schema.org/PropertyValue>;
-            <https://schema.org/value> ?listelements.
+			?propertyvalue a <https://schema.org/PropertyValue>;
+			<https://schema.org/identifier> ?identifier;
+			<https://schema.org/valueReference> ?valueReference.
+			FILTER regex(?identifier, "Workload", "i").
+            ?valueReference a  <https://schema.org/PropertyValue>;
+			<https://schema.org/name> ?name;	
+			<https://schema.org/value> ?value.
+			
             }
-            ORDER BY ASC(?listelements)
+            ORDER BY ASC(?name)
             {% endcapture %}
-            {% assign listelements = page.rdf | sparql_query: listelements_query %}
+            {% assign listelements = page.rdf | sparql_query: workload_query %}
             {% for result in listelements %}
-            {{result.listelements}}<br />
+            {{result.name}}<br />
             {% endfor %}
         </td>
     </tr>
@@ -203,7 +240,19 @@ layout: default
 
     <tr>
         <th>Gewichtung der Note in der Gesamtnote</th><td>
-
+	            {% capture grade_query %}
+	            SELECT DISTINCT ?grade  WHERE {
+	        ?resourceUri <https://schema.org/educationalAlignment> ?alignment.
+	        ?alignment a <https://schema.org/AlignmentObject>;
+			<https://schema.org/alignmentType> ?alignmentType;
+	        <https://schema.org/targetName> ?grade.
+			FILTER (regex(?alignmentType, "Gewichtung der Note", "i")).
+	        }
+	            {% endcapture %}
+	            {% assign listelements = page.rdf | sparql_query: grade_query %}
+	            {% for result in listelements %}
+	            {{result.grade}}<br />
+	            {% endfor %} 
     </td></tr>
 
     <tr>
