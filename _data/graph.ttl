@@ -1510,7 +1510,7 @@
         <https://schema.org/listItem>   <https://bmake.th-brandenburg.de/module/LResults_GPMO> ;
         <https://schema.org/name>       "Grundlagen der Prozessmodellierung"@de , "Basics of Business Process Modeling"@en ;
         <https://schema.org/timeRequired>
-                "P150H" ;
+                "PT150H" ;
         <https://schema.org/url>        <https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/grundlagen-der-prozessmodellierung/> .
 
 <https://schema.org/educationalAlignment>
@@ -1681,7 +1681,7 @@
                 "Results" ;
         <https://schema.org/itemListElement>
                 "Sie können Software-Werkzeuge zum Prozessmanagement in praktischen Fragestellungen bzw. Projekten gezielt und systematisch einsetzen." , "Sie sammeln Erfahrungen in der Planung und Durchführung von Projekten zur Prozessmodellierung nach KSA und BPMN 2.0." , "Die Studierenden beherrschen die Grundlagen der von der OMG spezifizierten Standard-Notation zur Modellierung von Geschäftsprozessen BPMN 2.0." , "Sie verfügen über Grundkompetenzen der Analyse und Modellierung von Geschäfts- und Kooperationsprozessen im Praxisfeld." , "Die Studierenden verstehen die Anforderungen und Problemfelder im Management von Geschäfts- und Kooperationsprozessen." ;
-        <https://schema.org/name>  "Lernergebnisse GPMO" .
+        <https://schema.org/label>  "Lernergebnisse GPMO" .
 
 <https://www.th-brandenburg.de/mitarbeiterseiten/fbw/andreas-johannsen>
         a                               <https://bmake.th-brandenburg.de/module/Lecturer> ;

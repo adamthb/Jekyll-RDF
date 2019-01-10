@@ -67,11 +67,8 @@ layout: default
 
     <tr>
         <th>Modulbezeichnung</th><td>
-        {% assign tests = page.rdf | rdf_property: '<https://schema.org/name>', nil, true %}
-
-        {% for res in tests %}
-        {{res}}<br />
-        {% endfor %}
+		{{ page.rdf | rdf_property: '<https://schema.org/name>','en'}} @en</br>
+		{{ page.rdf | rdf_property: '<https://schema.org/name>','de'}} @de
     </td></tr>
 
     <tr>
@@ -95,9 +92,11 @@ layout: default
             {% endcapture %}
             {% assign listelements = page.rdf | sparql_query: duration_query %}
             {% for result in listelements %}
-            {{result.duration}}<br />
+			{% assign n = result.duration | size %}
+			{%  assign n = n | minus: 4  %}
+			{{ result.duration | slice: n, 3 }} Jahr<br />
             {% endfor %}
-
+			
         </td></tr>
 
     <tr>
@@ -184,7 +183,12 @@ layout: default
         {% assign tests = page.rdf | rdf_property: '<https://schema.org/inLanguage>', nil, true %}
 
         {% for res in tests %}
-        {{res}}<br />
+		{% if res == 'en' %}
+		  Englisch<br />
+		{% endif %}
+		{% if res == 'de' %}
+		  Deutsch<br />
+		{% endif %}
         {% endfor %}
     </td></tr>
 
@@ -211,7 +215,10 @@ layout: default
         <td>{% assign tests = page.rdf | rdf_property: '<https://schema.org/timeRequired>', nil, true %}
 
             {% for res in tests %}
-            <li>Gesamt: {{res}}<br /></li>
+            <li>Gesamt: 
+				{% assign n = res | size %}
+				{%  assign n = n | minus: 4  %}
+				{{ res | slice: n, 3 }} Stunden<br /></li>
             {% endfor %}
 
             {% capture workload_query %}
