@@ -144,7 +144,17 @@ layout: default
 
     <tr>
         <th>Häufigkeit des Angebots von Modulen</th><td>
-
+            {% capture mode_query %}
+            SELECT DISTINCT ?mode WHERE {
+            ?resourceUri <https://schema.org/hasCourseInstance> ?instance.
+            ?instance a <https://schema.org/CourseInstance>;
+            <https://schema.org/courseMode> ?mode.
+            }
+            {% endcapture %}
+            {% assign listelements = page.rdf | sparql_query: mode_query %}
+            {% for result in listelements %}
+            {{result.mode}}<br />
+            {% endfor %}
     </td></tr>
 
     <tr>
@@ -154,7 +164,19 @@ layout: default
 
     <tr>
         <th>Dozent/in</th>
-        <td></td>
+        <td>
+            {% capture instructor_query %}
+            SELECT DISTINCT ?instructorName WHERE {
+            ?resourceUri <https://schema.org/accountablePerson> ?instructor.
+            ?instructor a <https://bmake.th-brandenburg.de/module/Lecturer>;
+            <http://www.w3.org/2000/01/rdf-schema#label> ?instructorName.
+            }
+            {% endcapture %}
+            {% assign listelements = page.rdf | sparql_query: instructor_query %}
+            {% for result in listelements %}
+            {{result.instructorName}}<br />
+            {% endfor %}
+        </td>
     </tr>
 
     <tr>
@@ -189,7 +211,7 @@ layout: default
         <td>{% assign tests = page.rdf | rdf_property: '<https://schema.org/timeRequired>', nil, true %}
 
             {% for res in tests %}
-            <li>{{res}}<br /></li>
+            <li>Gesamt: {{res}}<br /></li>
             {% endfor %}
 
             {% capture workload_query %}
@@ -208,14 +230,26 @@ layout: default
             {% endcapture %}
             {% assign listelements = page.rdf | sparql_query: workload_query %}
             {% for result in listelements %}
-            <li>{{result.name}}<br /></li>
+            <li>{{result.name}}: {{result.value}}<br /></li>
             {% endfor %}
         </td></ul>
     </tr>
 
     <tr>
         <th>Lehrform/SWS</th><td>
-
+            {% capture sws_query %}
+            SELECT DISTINCT ?swsLabel  WHERE {
+        ?resourceUri <https://schema.org/educationalAlignment> ?alignment.
+        ?alignment a <https://schema.org/AlignmentObject>;
+        <https://schema.org/alignmentType> ?alignmentType;
+        <https://schema.org/targetName> ?swsLabel.
+        FILTER (regex(?alignmentType, "SWS", "i")).
+        }
+            {% endcapture %}
+            {% assign listelements = page.rdf | sparql_query: sws_query %}
+            {% for result in listelements %}
+            {{result.swsLabel}}<br />
+            {% endfor %}
     </td></tr>
 
     <tr>
@@ -258,17 +292,17 @@ layout: default
     <tr>
         <th>Lernergebnisse</th>
         <td><ul>
-            {% capture listelements_query %}
+            {% capture lernergebnis_query %}
             SELECT DISTINCT ?listelements WHERE {
             ?resourceUri <https://schema.org/about> ?itemlist.
             ?itemlist a <https://schema.org/ItemList>;
-            <https://schema.org/name> ?name;
+            <https://schema.org/identifier> ?name;
             <https://schema.org/itemListElement> ?listelements.
-            FILTER regex(?name, "Lernergebnisse", "i").
+            FILTER regex(?name, "Results", "i").
             }
             ORDER BY ASC(?listelements)
             {% endcapture %}
-            {% assign listelements = page.rdf | sparql_query: listelements_query %}
+            {% assign listelements = page.rdf | sparql_query: lernergebnis_query %}
             {% for result in listelements %}
             <li>{{result.listelements}}<br /></li>
             {% endfor %}
@@ -305,8 +339,23 @@ layout: default
     </td></ul></tr>
 
     <tr>
-        <th>Literatur</th>
-        <td></td>
+        <th>Literatur</th><ul>
+        <td>
+            {% capture citation_query %}
+            SELECT DISTINCT ?headline ?authorName WHERE {
+            ?resourceUri <https://schema.org/citation> ?citation.
+            ?citation a <https://schema.org/Book>;
+			<https://schema.org/author> ?author;
+			<https://schema.org/headline> ?headline.
+			?author <http://www.w3.org/2000/01/rdf-schema#label> ?authorName.
+            }
+            ORDER BY ASC(?headline)
+            {% endcapture %}
+            {% assign listelements = page.rdf | sparql_query: citation_query %}
+            {% for result in listelements %}
+            <li>{{result.authorName}}:<br />{{result.headline}}</li>
+            {% endfor %}
+        </td></ul>
     </tr>
 
     <tr>

@@ -107,15 +107,6 @@
         <https://schema.org/name>   "betreute Projektarbeit" ;
         <https://schema.org/value>  15 .
 
-<https://bmake.th-brandenburg.de/module/WIB_MGTO>
-        a                          <https://schema.org/Course> ;
-        <http://www.w3.org/2000/01/rdf-schema#label>
-                "Management & Organisation" ;
-        <https://schema.org/courseCode>
-                "MGTO" ;
-        <https://schema.org/name>  "Management and Organization"@en , "Management und Organisation"@de ;
-        <https://schema.org/url>   "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/management-und-organisation/" .
-
 <https://bmake.th-brandenburg.de/module/TF2_PMSK>
         a                           <https://schema.org/PropertyValue> ;
         <https://schema.org/name>   "Übung" ;
@@ -283,17 +274,19 @@
         <https://schema.org/targetURL>  "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
 
 <https://schema.org/courseMode>
-        a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+        a       <http://www.w3.org/2002/07/owl#DatatypeProperty> , <http://www.w3.org/2002/07/owl#Class> ;
         <http://www.w3.org/2000/01/rdf-schema#comment>
-                "gibt an, in welcher Modalität ein Modul angeboten wird, z. B. jedes Sommersemester, Vollzeit"@de , "mode of performing a course instance, e. g. blended learning, full time, part time."@en ;
+                "mode of performing a course instance, e. g. blended learning, full time, part time."@en , "Gibt an, wie ein Modul angeboten wird."@de , "Specifies how frequently a module is offered."@en , "gibt an, in welcher Modalität ein Modul angeboten wird, z. B. jedes Sommersemester, Vollzeit"@de ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
                 <https://schema.org/CourseInstance> ;
         <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
                 <https://schema.org/> ;
         <http://www.w3.org/2000/01/rdf-schema#label>
-                "Art und Häufigkeit des Angebots"@de , "course mode"@en ;
+                "course mode"@en , "Art und Häufigkeit des Angebots"@de ;
         <http://www.w3.org/2000/01/rdf-schema#range>
-                <https://schema.org/Text> .
+                <https://schema.org/Text> ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <https://schema.org/Intangible> .
 
 <https://schema.org/AlignmentObject>
         a       <http://www.w3.org/2002/07/owl#Class> ;
@@ -429,7 +422,7 @@
         <https://schema.org/targetDescription>
                 "Gewichtungsanteile der Note im Hinblick auf die spezifische Fachnote (1/3), den Mittelwert aller Fachnoten (3,33 %) sowie die Abschlussnote (2,67 %)" ;
         <https://schema.org/targetName>
-                "1/3 der Fachnote, 3,33 % des Mittelwerts aller Modulnoten, 2,67 % der Abschlussnote" ;
+                "1/3 der Fachnote" , " 2,67 % der Abschlussnote" , "3,33 % des Mittelwerts aller Modulnoten" ;
         <https://schema.org/targetURL>  "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
 
 <https://schema.org/identifier>
@@ -552,42 +545,6 @@
         <https://schema.org/honorificPrefix>
                 "" .
 
-<https://bmake.th-brandenburg.de/module/WIB_SYSA>
-        a                              <https://schema.org/Course> ;
-        <http://www.w3.org/2000/01/rdf-schema#label>
-                "Systemanalyse" ;
-        <https://schema.org/about>     <https://bmake.th-brandenburg.de/module/Content_SYSA> , <https://bmake.th-brandenburg.de/module/LResults_SYSA> , <https://bmake.th-brandenburg.de/module/Exam_SYSA> ;
-        <https://schema.org/accountablePerson>
-                <https://www.th-brandenburg.de/mitarbeiterseiten/fbw/dietmar-wikarski> ;
-        <https://schema.org/additionalProperty>
-                <https://bmake.th-brandenburg.de/module/TeachingForms_SYSA> , <https://bmake.th-brandenburg.de/module/CompWL_SYSA> ;
-        <https://schema.org/citation>  <https://www.isbn-international.org/9783865811998> , <https://www.isbn-international.org/978-3642354458> , <https://www.isbn-international.org/978-3486584462> , <http://doi.org/10.1007/978-3-8348-2428-8> ;
-        <https://schema.org/comment>   "Gruppenarbeiten werden unterstützt durch eine kollaborative Dateiaustausch-Plattform (BSCW)." ;
-        <https://schema.org/courseCode>
-                "CourseCode" ;
-        <https://schema.org/coursePrerequisites>
-                "keine" ;
-        <https://schema.org/datePublished>
-                "2018-06-01" ;
-        <https://schema.org/educationalAlignment>
-                <https://bmake.th-brandenburg.de/module/ModuleType_WIB_SYSA> , <https://bmake.th-brandenburg.de/module/Grade_WIB_SYSA> , <https://bmake.th-brandenburg.de/module/Curr_WIB_SYSA> , <https://bmake.th-brandenburg.de/module/SWS_WIB_SYSA> ;
-        <https://schema.org/educationalCredentialAwarded>
-                "5" ;
-        <https://schema.org/educationalUse>
-                "Dient der Vorbereitung darauf aufbauender Veranstaltungen, insbesondere bzgl. Modellierung von Prozessen." ;
-        <https://schema.org/hasCourseInstance>
-                <https://bmake.th-brandenburg.de/module/Wi18_SYSA> ;
-        <https://schema.org/inLanguage>
-                "de" , "en" ;
-        <https://schema.org/interactivityType>
-                "Gruppenarbeiten" , "Vorlesung mit Folien" , "begleitende Übungen mit Hausaufgaben" ;
-        <https://schema.org/learningResourceType>
-                "Vorlesung" , "Übung" ;
-        <https://schema.org/name>      "Systemanalyse"@de , "Systems Analysis"@en ;
-        <https://schema.org/timeRequired>
-                "PT150H" ;
-        <https://schema.org/url>       "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/systemanalyse/" .
-
 <https://bmake.th-brandenburg.de/module/LResults_PMSK>
         a                          <https://schema.org/ItemList> ;
         <https://schema.org/identifier>
@@ -640,6 +597,22 @@
         a                           <https://schema.org/PropertyValue> ;
         <https://schema.org/name>   "Vorlesung" ;
         <https://schema.org/value>  30 .
+
+<https://www.th-brandenburg.de/mitarbeiterseiten/fbw/dietmar-wikarski>
+        a                               <https://bmake.th-brandenburg.de/module/Lecturer> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Prof. Dr. Dietmar Wikarski" ;
+        <https://schema.org/affiliation>
+                <http://www.wikidata.org/entity/Q1391182> ;
+        <https://schema.org/email>      "dietmar.wikarski@th-brandenburg.de" ;
+        <https://schema.org/familyName>
+                "Wikarski" ;
+        <https://schema.org/givenName>  "Dietmar" ;
+        <https://schema.org/honorificPrefix>
+                "Prof. Dr. rer. nat." ;
+        <https://schema.org/honorificSuffix>
+                "" ;
+        <https://schema.org/sameAs>     "https://www.researchgate.net/profile/Dietmar_Wikarski" .
 
 <https://buch-findr.de/autoren/kress-nadina-maria/>
         a                               <https://bmake.th-brandenburg.de/module/Author> ;
@@ -748,6 +721,40 @@
         <https://schema.org/name>   "Selbststudium und Prüfungsvorbereitung" ;
         <https://schema.org/value>  45 .
 
+<https://bmake.th-brandenburg.de/module/WIB_AAIT2>
+        a                               <https://schema.org/Course> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Auswahl & Anpassung IT-Dienste" ;
+        <https://schema.org/AAIT>       "AAIT" ;
+        <https://schema.org/about>      <https://bmake.th-brandenburg.de/module/Exam_AAIT> , <https://bmake.th-brandenburg.de/module/LResults_AAIT> , <https://bmake.th-brandenburg.de/module/Content_AAIT> ;
+        <https://schema.org/accountablePerson>
+                <https://www.th-brandenburg.de/mitarbeiterseiten/fbw/vera-meister> ;
+        <https://schema.org/additionalProperty>
+                <https://bmake.th-brandenburg.de/module/TeachingForms_AAIT> , <https://bmake.th-brandenburg.de/module/CompWL_AAIT> ;
+        <https://schema.org/citation>   <https://www.isbn-international.org/0-321-71151-3> , <http://doi.org/10.1007/b97668> , <http://www.wikidata.org/entity/Q428361> , <https://www.isbn-international.org/978-3-446-43893-4> , <https://www.isbn-international.org/978-1500555788> ;
+        <https://schema.org/comment>    "Austauschworkshop oder Poster Session in englischer Sprache in Kooperation mit dem Studiengang Ökonomische Kybernetik der ATFred Nobel University Dnipro (Ukraine); Praxisvorträge von Unternehmensvertretern" ;
+        <https://schema.org/datePublished>
+                "2018-06-01" ;
+        <https://schema.org/educationalAlignment>
+                <https://bmake.th-brandenburg.de/module/Grade_WIB_AAIT> , <https://bmake.th-brandenburg.de/module/Curr_WIB_AAIT> , <https://bmake.th-brandenburg.de/module/ModuleType_WIB_AAIT> , <https://bmake.th-brandenburg.de/module/SWS_WIB_AAIT> ;
+        <https://schema.org/educationalCredentialAwarded>
+                "5" ;
+        <https://schema.org/educationalUse>
+                "Das Modul kann auch im Masterstudiengang Informatik (dortiger Titel: Softwareauswahl und -bewertung) entsprechend der geltenden SPO verwendet werden." ;
+        <https://schema.org/hasCourseInstance>
+                <https://bmake.th-brandenburg.de/module/Wi18_AAIT> ;
+        <https://schema.org/inLanguage>
+                "de" , "en" ;
+        <https://schema.org/interactivityType>
+                "Konsultationen und Coaching" , "- Teambasierte Projektarbeit mit Meilensteinmeetings" , "Seminaristische Vorlesungen" , "Videovorlesungen" , "Studentische Präsentationen" , "Workshops zu Methoden und Werkzeugen" , "Übungen zur Anwendung von Frameworks und Methoden" ;
+        <https://schema.org/isBasedOn>  <https://bmake.th-brandenburg.de/module/WIB_MGTO> , <https://bmake.th-brandenburg.de/module/WIB_SWEN> , <https://bmake.th-brandenburg.de/module/WIB_INFM> ;
+        <https://schema.org/learningResourceType>
+                "Vorlesung" , "Projekt" , "Übung" ;
+        <https://schema.org/name>       "Auswahl und Anpassung von IT-Diensten"@de , "Selection and Customizing of IT Services"@en ;
+        <https://schema.org/timeRequired>
+                "PT150H" ;
+        <https://schema.org/url>        "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/auswahl-und-anpassung-von-it-diensten/" .
+
 <https://www.w3.org/TR/skos-reference/>
         a                               <https://schema.org/DigitalDocument> ;
         <http://www.w3.org/2000/01/rdf-schema#label>
@@ -768,34 +775,20 @@
         <https://schema.org/honorificPrefix>
                 "" .
 
-<https://www.th-brandenburg.de/mitarbeiterseiten/fbw/vera-meister>
-        a                               <https://bmake.th-brandenburg.de/module/Lecturer> ;
-        <http://www.w3.org/2000/01/rdf-schema#label>
-                "Prof. Dr. Vera G. Meister" ;
-        <https://schema.org/affiliation>
-                <http://www.wikidata.org/entity/Q1391182> ;
-        <https://schema.org/email>      "vera.meister@th-brandenburg.de" ;
-        <https://schema.org/familyName>
-                "Meister" ;
-        <https://schema.org/givenName>  "Vera G." ;
-        <https://schema.org/honorificPrefix>
-                "Prof. Dr. rer. nat." ;
-        <https://schema.org/honorificSuffix>
-                "" ;
-        <https://schema.org/sameAs>     "http://orcid.org/0000-0002-2780-0222" .
-
 <https://schema.org/duration>
-        a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+        a       <http://www.w3.org/2002/07/owl#Class> , <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#comment>
-                "gibt an, ob sich ein Modul über ein Semester (Regelfall) oder einen davon abweichenden Zeitraum erstreckt"@de , "Duration of a course instance, here measured in semesters."@en ;
+                "gibt an, ob sich ein Modul über ein Semester (Regelfall) oder einen davon abweichenden Zeitraum erstreckt"@de , "Here used for specifying the duration of an educational video, follows the ISO 8601 duration format."@en , "Duration of a course instance, here measured in semesters."@en , "Hier für die Angabe der Workload für unterschiedliche Lehr-Lernaktivitäten sowie die Gesamtdauer einer Lehrveranstaltung. Die Angabe folgt dem ISO 8601 Format für Zeiträume."@de ;
         <http://www.w3.org/2000/01/rdf-schema#domain>
                 <https://schema.org/CourseInstance> ;
         <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
                 <https://schema.org/> ;
         <http://www.w3.org/2000/01/rdf-schema#label>
-                "Dauer des Moduls"@de , "duration"@en ;
+                "Dauer des Moduls"@de , "Duration"@en , "duration"@en , "Dauer"@de ;
         <http://www.w3.org/2000/01/rdf-schema#range>
-                <https://schema.org/Duration> .
+                <https://schema.org/duration> ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <https://schema.org/Intangible> .
 
 <https://schema.org/bookEdition>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
@@ -1085,6 +1078,22 @@
         <https://schema.org/name>   "Vorlesung" ;
         <https://schema.org/value>  30 .
 
+<https://www.th-brandenburg.de/mitarbeiterseiten/fbw/vera-meister>
+        a                               <https://bmake.th-brandenburg.de/module/Lecturer> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Prof. Dr. Vera G. Meister" ;
+        <https://schema.org/affiliation>
+                <http://www.wikidata.org/entity/Q1391182> ;
+        <https://schema.org/email>      "vera.meister@th-brandenburg.de" ;
+        <https://schema.org/familyName>
+                "Meister" ;
+        <https://schema.org/givenName>  "Vera G." ;
+        <https://schema.org/honorificPrefix>
+                "Prof. Dr. rer. nat." ;
+        <https://schema.org/honorificSuffix>
+                "" ;
+        <https://schema.org/sameAs>     "http://orcid.org/0000-0002-2780-0222" .
+
 <https://schema.org/datePublished>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#comment>
@@ -1127,40 +1136,6 @@
         <https://schema.org/name>   "Übung" ;
         <https://schema.org/value>  30 .
 
-<https://bmake.th-brandenburg.de/module/WIB_AWIM>
-        a                               <https://schema.org/Course> ;
-        <http://www.w3.org/2000/01/rdf-schema#label>
-                "Angewandte Wissensmodellierung" ;
-        <https://schema.org/AWIM>       "AWIM" ;
-        <https://schema.org/about>      <https://bmake.th-brandenburg.de/module/Exam_AWIM> , <https://bmake.th-brandenburg.de/module/LResults_AWIM> , <https://bmake.th-brandenburg.de/module/Content_AWIM> ;
-        <https://schema.org/accountablePerson>
-                <https://www.th-brandenburg.de/mitarbeiterseiten/fbw/vera-meister> ;
-        <https://schema.org/additionalProperty>
-                <https://bmake.th-brandenburg.de/module/CompWL_AWIM> , <https://bmake.th-brandenburg.de/module/TeachingForms_AWIM> ;
-        <https://schema.org/citation>   <http://www.omg.org/spec/DMN/1.1/PDF> , <https://www.omg.org/spec/BPMN/2.0.2/PDF> , <http://www.omg.org/spec/CMMN/1.1/PDF> , <https://www.isbn-international.org/978-3-446-45054-7> , <https://www.w3.org/TR/rdf11-primer/> , <https://www.w3.org/TR/skos-reference/> , <https://www.isbn-international.org/1502789647> ;
-        <https://schema.org/comment>    "" ;
-        <https://schema.org/datePublished>
-                "2018-06-01" ;
-        <https://schema.org/educationalAlignment>
-                <https://bmake.th-brandenburg.de/module/SWS_WIB_AWIM> , <https://bmake.th-brandenburg.de/module/Grade_WIB_AWIM> , <https://bmake.th-brandenburg.de/module/ModuleType_WIB_AWIM> , <https://bmake.th-brandenburg.de/module/Curr_WIB_AWIM> ;
-        <https://schema.org/educationalCredentialAwarded>
-                "5" ;
-        <https://schema.org/educationalUse>
-                "" ;
-        <https://schema.org/hasCourseInstance>
-                <https://bmake.th-brandenburg.de/module/So18_AWIM> ;
-        <https://schema.org/inLanguage>
-                "en" , "de" ;
-        <https://schema.org/interactivityType>
-                "Werkzeugtutorials und -präsentationen" , "Individuelle Projektarbeit" , "Praktische Übungen und Konsultationen" , "Video-Vorlesungen" , "Seminaristische Vorlesungen" , "Studentische Präsentationen" ;
-        <https://schema.org/isBasedOn>  <https://bmake.th-brandenburg.de/module/WIB_GPMO> ;
-        <https://schema.org/learningResourceType>
-                "Übung" , "Vorlesung" , "Projekt" ;
-        <https://schema.org/name>       "Angewandte Wissensmodellierung"@de , "Applied Knowledge Engineering"@en ;
-        <https://schema.org/timeRequired>
-                "PT150H" ;
-        <https://schema.org/url>        "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/wahlpflicht-i-angewandte-wissensmodellierung/" .
-
 <https://bmake.th-brandenburg.de/module/TeachingForms_SYSA>
         a                          <https://schema.org/PropertyValue> ;
         <https://schema.org/identifier>
@@ -1197,13 +1172,48 @@
         <http://www.w3.org/2000/01/rdf-schema#label>
                 "Organisation/Einrichtung"@de , "Organization"@en .
 
+<https://bmake.th-brandenburg.de/module/WIB_PMSK2>
+        a                              <https://schema.org/Course> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Projekt-Mgt & Soziale Komp." ;
+        <https://schema.org/PMSK>      "PMSK" ;
+        <https://schema.org/about>     <https://bmake.th-brandenburg.de/module/Exam_PMSK> , <https://bmake.th-brandenburg.de/module/LResults_PMSK> , <https://bmake.th-brandenburg.de/module/Content_PMSK> ;
+        <https://schema.org/accountablePerson>
+                <https://www.th-brandenburg.de/mitarbeiterseiten/fbw/andreas-johannsen> ;
+        <https://schema.org/additionalProperty>
+                <https://bmake.th-brandenburg.de/module/TeachingForms_PMSK> , <https://bmake.th-brandenburg.de/module/CompWL_PMSK> ;
+        <https://schema.org/citation>  <https://www.dimap.ufrn.br/~jair/ES/artigos/SpiralModelBoehm.pdf> , <http://doi.org/10.1007/978-3-322-82334-2k> , <https://www.isbn-international.org/978-3-8274-1161-7> , <https://www.isbn-international.org/3763229892> , <https://www.isbn-international.org/978-3499174896> , <https://www.isbn-international.org/978-38974949303> , <https://www.isbn-international.org/978-3-86490-429-5> ;
+        <https://schema.org/comment>   "Assessment-Center (Videoanalyse), Fallbeispiele aus der Unternehmenspraxis, Möglichkeit des Erwerbs des Zertifikats „Certified Professional in Project Management“ des ASQF/ISQI durch freiwillige Teilnahme an einer zusätzlichen einwöchigen Blockveranstaltung." ;
+        <https://schema.org/coursePrerequisites>
+                "keine" ;
+        <https://schema.org/datePublished>
+                "2018-06-01" ;
+        <https://schema.org/educationalAlignment>
+                <https://bmake.th-brandenburg.de/module/SWS_WIB_PMSK> , <https://bmake.th-brandenburg.de/module/ModuleType_WIB_PMSK> , <https://bmake.th-brandenburg.de/module/Curr_WIB_PMSK> , <https://bmake.th-brandenburg.de/module/Grade_WIB_PMSK> ;
+        <https://schema.org/educationalCredentialAwarded>
+                "5" ;
+        <https://schema.org/educationalUse>
+                "Dient der Vorbereitung darauf aufbauender Veranstaltungen." ;
+        <https://schema.org/hasCourseInstance>
+                <https://bmake.th-brandenburg.de/module/Wi18_PMSK> ;
+        <https://schema.org/inLanguage>
+                "de" , "en" ;
+        <https://schema.org/interactivityType>
+                "Präsentationen" , "Gruppenarbeit" , "Hausarbeit" , "Vorlesung mit gemischten Medien (Folien, Tafelarbeit, Demos)" , "Begleitende Übungen mit Assessment Center (Videoaufzeichnungen und -Auswertungen in der Gruppe)" ;
+        <https://schema.org/learningResourceType>
+                "Übung" , "Vorlesung" ;
+        <https://schema.org/name>      "Project Management and Social Competences"@en , "Projektmanagement und Soziale Kompetenzen"@de ;
+        <https://schema.org/timeRequired>
+                "PT150H" ;
+        <https://schema.org/url>       "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/projektmanagement-und-soziale-kompetenzen/" .
+
 <https://bmake.th-brandenburg.de/module/TeachingForms_GPMO>
         a                          <https://schema.org/PropertyValue> ;
         <https://schema.org/identifier>
                 "TeachingForms" ;
         <https://schema.org/name>  "Lehrformen mit Präsenzzeiten in Stunden" ;
         <https://schema.org/valueReference>
-                <https://bmake.th-brandenburg.de/module/TF2_GPMO> , <https://bmake.th-brandenburg.de/module/TF1_GPMO> .
+                <https://bmake.th-brandenburg.de/module/TF2_GPMO/> , <https://bmake.th-brandenburg.de/module/TF1_GPMO> .
 
 <https://schema.org/affiliation>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
@@ -1230,22 +1240,6 @@
                 "dasselbe"@de , "same as"@en ;
         <http://www.w3.org/2000/01/rdf-schema#range>
                 <https://schema.org/URL> .
-
-<https://www.th-brandenburg.de/mitarbeiterseiten/fbw/dietmar-wikarski>
-        a                               <https://bmake.th-brandenburg.de/module/Lecturer> ;
-        <http://www.w3.org/2000/01/rdf-schema#label>
-                "Prof. Dr. Dietmar Wikarski" ;
-        <https://schema.org/affiliation>
-                <http://www.wikidata.org/entity/Q1391182> ;
-        <https://schema.org/email>      "dietmar.wikarski@th-brandenburg.de" ;
-        <https://schema.org/familyName>
-                "Wikarski" ;
-        <https://schema.org/givenName>  "Dietmar" ;
-        <https://schema.org/honorificPrefix>
-                "Prof. Dr. rer. nat." ;
-        <https://schema.org/honorificSuffix>
-                "" ;
-        <https://schema.org/sameAs>     "https://www.researchgate.net/profile/Dietmar_Wikarski" .
 
 <https://bmake.th-brandenburg.de/module/Grade_WIB>
         a                               <https://schema.org/AlignmentObject> ;
@@ -1341,15 +1335,6 @@
                 "1/3 der Fachnote, 3,33 % des Mittelwerts aller Modulnoten, 2,67 % der Abschlussnote" ;
         <https://schema.org/targetURL>  "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
 
-<https://bmake.th-brandenburg.de/module/WIB_INFM>
-        a                          <https://schema.org/Course> ;
-        <http://www.w3.org/2000/01/rdf-schema#label>
-                "Informationsmanagement" ;
-        <https://schema.org/courseCode>
-                "INFM" ;
-        <https://schema.org/name>  "Information Management"@en , "Informationsmanagement"@de ;
-        <https://schema.org/url>   "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/informationsmanagement/" .
-
 <https://bmake.th-brandenburg.de/module/CompWL_AAIT>
         a                          <https://schema.org/PropertyValue> ;
         <https://schema.org/identifier>
@@ -1439,6 +1424,12 @@
         <https://schema.org/honorificPrefix>
                 "" .
 
+<https://bmake.th-brandenburg.de/modcat2/pruefungsleistungen>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "examination"@en , "Studien-/Prüfungsleistungen"@de ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <https://schema.org/Intangible> .
+
 <https://www.omg.org/spec/BPMN/2.0.2/PDF>
         a                               <https://schema.org/DigitalDocument> ;
         <http://www.w3.org/2000/01/rdf-schema#label>
@@ -1462,10 +1453,65 @@
         <http://www.w3.org/2000/01/rdf-schema#range>
                 <https://schema.org/CourseInstance> .
 
+<https://bmake.th-brandenburg.de/module/WIB_SWEN2>
+        a                          <https://schema.org/Course> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "SW-Engineering" ;
+        <https://schema.org/courseCode>
+                "SWEN" ;
+        <https://schema.org/name>  "Software Engineering"@en , "Software Engineering"@de ;
+        <https://schema.org/url>   "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/software-engineering/" .
+
 <https://bmake.th-brandenburg.de/module/WL5_AWIM>
         a                            <https://schema.org/PropertyValue> ;
         <https://schema.org/name>    "selbständige Projektarbeit" ;
         <https://schema.org/valued>  70 .
+
+<https://bmake.th-brandenburg.de/module/WIB_GPMO2>
+        a                               <https://schema.org/Course> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Grundlagen Prozessmodellierung" ;
+        <https://bmake.th-brandenburg.de/modcat2/getTextElement>
+                <https://bmake.th-brandenburg.de/mocdcat2/> ;
+        <https://bmake.th-brandenburg.de/vidp#getTextElement>
+                <https://bmake.th-brandenburg.de/modcat2/test> ;
+        <https://schema.org/about>      <https://bmake.th-brandenburg.de/module/LResults_GPMO> , <https://bmake.th-brandenburg.de/module/Content_GPMO> , <https://bmake.th-brandenburg.de/module/Exam_GPMO> ;
+        <https://schema.org/accountablePerson>
+                <https://www.th-brandenburg.de/mitarbeiterseiten/fbw/vera-meister> ;
+        <https://schema.org/additionalProperty>
+                <https://bmake.th-brandenburg.de/module/CompWL_GPMO> , <https://bmake.th-brandenburg.de/module/TeachingForms_GPMO> ;
+        <https://schema.org/citation>   <https://www.isbn-international.org/978-0982368114> , <https://www.isbn-international.org/978-3738626711> , <http://doi.org/10.1007/978-3-8348-2428-8> , <https://www.omg.org/spec/BPMN/2.0.2/PDF> , <https://www.isbn-international.org/978-3-446-45054-7> ;
+        <https://schema.org/comment>    "Praxisprojekt im Hochschul- oder Unternehmensumfeld" ;
+        <https://schema.org/courseCode>
+                "GPMO" ;
+        <https://schema.org/coursePrerequisites>
+                "Grundkenntnisse der Systemanalyse" ;
+        <https://schema.org/datePublished>
+                "2018-06-01" ;
+        <https://schema.org/educationalAlignment>
+                <https://bmake.th-brandenburg.de/module/Curr_WIB_GPMO> , <https://bmake.th-brandenburg.de/module/SWS_WIB_GPMO> , <https://bmake.th-brandenburg.de/module/ModuleType_WIB_GPMO> , <https://bmake.th-brandenburg.de/module/Grade_WIB_GPMO> ;
+        <https://schema.org/educationalCredentialAwarded>
+                "5" ;
+        <https://schema.org/educationalUse>
+                "Dient der Vorbereitung darauf aufbauender Veranstaltungen, insbesondere bzgl. Operationalisiserung von Prozessen." ;
+        <https://schema.org/hasCourseInstance>
+                <https://bmake.th-brandenburg.de/module/So18_GPMO> ;
+        <https://schema.org/identifier>
+                "Results" ;
+        <https://schema.org/inLanguage>
+                "de" , "en" ;
+        <https://schema.org/interactivityType>
+                "Praktische Übungen und Konsultationen" , "Werkzeugtutorials und -präsentationen" , "Projektarbeit in Gruppen und Kleingruppen" , "Video-Vorlesungen" , "Studentische Präsentationen" , "Seminaristische Vorlesungen" , "MC Selbsttests" ;
+        <https://schema.org/isBasedOn>  <https://bmake.th-brandenburg.de/module/WIB_SYSA> ;
+        <https://schema.org/itemListElement>
+                "Sie sammeln Erfahrungen in der Planung und Durchführung von Projekten zur Prozessmodellierung nach KSA und BPMN 2.0." , "Sie können Software-Werkzeuge zum Prozessmanagement in praktischen Fragestellungen bzw. Projekten gezielt und systematisch einsetzen." , "Die Studierenden beherrschen die Grundlagen der von der OMG spezifizierten Standard-Notation zur Modellierung von Geschäftsprozessen BPMN 2.0." , "Sie verfügen über Grundkompetenzen der Analyse und Modellierung von Geschäfts- und Kooperationsprozessen im Praxisfeld." , "Die Studierenden verstehen die Anforderungen und Problemfelder im Management von Geschäfts- und Kooperationsprozessen." ;
+        <https://schema.org/learningResourceType>
+                "Vorlesung" , "Projekt" , "Übung" ;
+        <https://schema.org/listItem>   <https://bmake.th-brandenburg.de/module/LResults_GPMO> ;
+        <https://schema.org/name>       "Grundlagen der Prozessmodellierung"@de , "Basics of Business Process Modeling"@en ;
+        <https://schema.org/timeRequired>
+                "P150H" ;
+        <https://schema.org/url>        <https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/grundlagen-der-prozessmodellierung/> .
 
 <https://schema.org/educationalAlignment>
         a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
@@ -1616,17 +1662,6 @@
         <https://schema.org/headline>  "Technical Impact – Making your Information Technology Effective and Keeping it That Way" ;
         <https://schema.org/url>       "" .
 
-<https://schema.org/Duration>
-        a       <http://www.w3.org/2002/07/owl#Class> ;
-        <http://www.w3.org/2000/01/rdf-schema#comment>
-                "Hier für die Angabe der Workload für unterschiedliche Lehr-Lernaktivitäten sowie die Gesamtdauer einer Lehrveranstaltung. Die Angabe folgt dem ISO 8601 Format für Zeiträume."@de , "Here used for specifying the duration of an educational video, follows the ISO 8601 duration format."@en ;
-        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
-                <https://schema.org/> ;
-        <http://www.w3.org/2000/01/rdf-schema#label>
-                "Dauer"@de , "Duration"@en ;
-        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
-                <https://schema.org/Intangible> .
-
 <https://schema.org/pageEnd>
         a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
         <http://www.w3.org/2000/01/rdf-schema#comment>
@@ -1641,7 +1676,7 @@
                 <https://schema.org/Text> .
 
 <https://bmake.th-brandenburg.de/module/LResults_GPMO>
-        a                          <https://schema.org/ItemList> ;
+        a                           <https://schema.org/ItemList> ;
         <https://schema.org/identifier>
                 "Results" ;
         <https://schema.org/itemListElement>
@@ -1684,6 +1719,20 @@
         <http://www.w3.org/2000/01/rdf-schema#subClassOf>
                 <https://schema.org/CreativeWork> .
 
+<https://bmake.th-brandenburg.de/modcat2/dbd1fee2-5f74-44ed-9e41-e55fab287771>
+        a                              <https://schema.org/Course> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Grundlagen Prozessmodellierung" ;
+        <https://schema.org/about>     <https://bmake.th-brandenburg.de/module/Exam_GPMO> , <https://bmake.th-brandenburg.de/module/Content_GPMO> , <https://bmake.th-brandenburg.de/module/LResults_GPMO> ;
+        <https://schema.org/accountablePerson>
+                <https://www.th-brandenburg.de/mitarbeiterseiten/fbw/vera-meister> ;
+        <https://schema.org/additionalProperty>
+                <https://bmake.th-brandenburg.de/module/CompWL_GPMO> , <https://bmake.th-brandenburg.de/module/TeachingForms_GPMO> ;
+        <https://schema.org/citation>  <https://www.isbn-international.org/978-3738626711> , <https://www.isbn-international.org/978-0982368114> , <https://www.isbn-international.org/978-3-446-45054-7> , <https://www.omg.org/spec/BPMN/2.0.2/PDF> , <http://doi.org/10.1007/978-3-8348-2428-8> ;
+        <https://schema.org/comment>   "Praxisprojekt im Hochschul- oder Unternehmensumfeld" ;
+        <https://schema.org/courseCode>
+                "GPMO" .
+
 <https://www.isbn-international.org/0-321-71151-3>
         a                              <https://schema.org/Book> ;
         <http://www.w3.org/2000/01/rdf-schema#label>
@@ -1695,40 +1744,6 @@
                 "2011" ;
         <https://schema.org/headline>  "CMMI for Acquisition – Guidelines for Improving the Acquisition of Products and Services" ;
         <https://schema.org/url>       "https://resources.sei.cmu.edu/library/asset-view.cfm?assetid=31042" .
-
-<https://bmake.th-brandenburg.de/module/WIB_AAIT>
-        a                               <https://schema.org/Course> ;
-        <http://www.w3.org/2000/01/rdf-schema#label>
-                "Auswahl & Anpassung IT-Dienste" ;
-        <https://schema.org/AAIT>       "AAIT" ;
-        <https://schema.org/about>      <https://bmake.th-brandenburg.de/module/LResults_AAIT> , <https://bmake.th-brandenburg.de/module/Exam_AAIT> , <https://bmake.th-brandenburg.de/module/Content_AAIT> ;
-        <https://schema.org/accountablePerson>
-                <https://www.th-brandenburg.de/mitarbeiterseiten/fbw/vera-meister> ;
-        <https://schema.org/additionalProperty>
-                <https://bmake.th-brandenburg.de/module/CompWL_AAIT> , <https://bmake.th-brandenburg.de/module/TeachingForms_AAIT> ;
-        <https://schema.org/citation>   <http://doi.org/10.1007/b97668> , <https://www.isbn-international.org/978-1500555788> , <https://www.isbn-international.org/0-321-71151-3> , <https://www.isbn-international.org/978-3-446-43893-4> , <http://www.wikidata.org/entity/Q428361> ;
-        <https://schema.org/comment>    "Austauschworkshop oder Poster Session in englischer Sprache in Kooperation mit dem Studiengang Ökonomische Kybernetik der ATFred Nobel University Dnipro (Ukraine); Praxisvorträge von Unternehmensvertretern" ;
-        <https://schema.org/datePublished>
-                "2018-06-01" ;
-        <https://schema.org/educationalAlignment>
-                <https://bmake.th-brandenburg.de/module/SWS_WIB_AAIT> , <https://bmake.th-brandenburg.de/module/Curr_WIB_AAIT> , <https://bmake.th-brandenburg.de/module/ModuleType_WIB_AAIT> , <https://bmake.th-brandenburg.de/module/Grade_WIB_AAIT> ;
-        <https://schema.org/educationalCredentialAwarded>
-                "5" ;
-        <https://schema.org/educationalUse>
-                "Das Modul kann auch im Masterstudiengang Informatik (dortiger Titel: Softwareauswahl und -bewertung) entsprechend der geltenden SPO verwendet werden." ;
-        <https://schema.org/hasCourseInstance>
-                <https://bmake.th-brandenburg.de/module/Wi18_AAIT> ;
-        <https://schema.org/inLanguage>
-                "de" , "en" ;
-        <https://schema.org/interactivityType>
-                "Übungen zur Anwendung von Frameworks und Methoden" , "Studentische Präsentationen" , "Konsultationen und Coaching" , "- Teambasierte Projektarbeit mit Meilensteinmeetings" , "Workshops zu Methoden und Werkzeugen" , "Seminaristische Vorlesungen" , "Videovorlesungen" ;
-        <https://schema.org/isBasedOn>  <https://bmake.th-brandenburg.de/module/WIB_SWEN> , <https://bmake.th-brandenburg.de/module/WIB_MGTO> , <https://bmake.th-brandenburg.de/module/WIB_INFM> ;
-        <https://schema.org/learningResourceType>
-                "Übung" , "Projekt" , "Vorlesung" ;
-        <https://schema.org/name>       "Auswahl und Anpassung von IT-Diensten"@de , "Selection and Customizing of IT Services"@en ;
-        <https://schema.org/timeRequired>
-                "PT150H" ;
-        <https://schema.org/url>        "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/auswahl-und-anpassung-von-it-diensten/" .
 
 <http://www.omg.org/spec/CMMN/1.1/PDF>
         a                               <https://schema.org/DigitalDocument> ;
@@ -1756,42 +1771,41 @@
                 "Klausur (50 %)" , "Hausarbeit mit Präsentation (40 %)" , "Assessment Center Bericht (10 %)" ;
         <https://schema.org/name>  "Studien-/Prüfungsleistungen PMSK" .
 
-<https://bmake.th-brandenburg.de/module/WIB_GPMO>
-        a                               <https://schema.org/Course> ;
+<https://bmake.th-brandenburg.de/module/WIB_SYSA2>
+        a                              <https://schema.org/Course> ;
         <http://www.w3.org/2000/01/rdf-schema#label>
-                "Grundlagen Prozessmodellierung" ;
-        <https://schema.org/about>      <https://bmake.th-brandenburg.de/module/Exam_GPMO> , <https://bmake.th-brandenburg.de/module/Content_GPMO> , <https://bmake.th-brandenburg.de/module/LResults_GPMO> ;
+                "Systemanalyse" ;
+        <https://schema.org/about>     <https://bmake.th-brandenburg.de/module/Content_SYSA> , <https://bmake.th-brandenburg.de/module/LResults_SYSA> , <https://bmake.th-brandenburg.de/module/Exam_SYSA> ;
         <https://schema.org/accountablePerson>
-                <https://www.th-brandenburg.de/mitarbeiterseiten/fbw/vera-meister> ;
+                <https://www.th-brandenburg.de/mitarbeiterseiten/fbw/dietmar-wikarski> ;
         <https://schema.org/additionalProperty>
-                <https://bmake.th-brandenburg.de/module/TeachingForms_GPMO> , <https://bmake.th-brandenburg.de/module/CompWL_GPMO> ;
-        <https://schema.org/citation>   <http://doi.org/10.1007/978-3-8348-2428-8> , <https://www.isbn-international.org/978-3738626711> , <https://www.omg.org/spec/BPMN/2.0.2/PDF> , <https://www.isbn-international.org/978-3-446-45054-7> , <https://www.isbn-international.org/978-0982368114> ;
-        <https://schema.org/comment>    "Praxisprojekt im Hochschul- oder Unternehmensumfeld" ;
+                <https://bmake.th-brandenburg.de/module/TeachingForms_SYSA> , <https://bmake.th-brandenburg.de/module/CompWL_SYSA> ;
+        <https://schema.org/citation>  <https://www.isbn-international.org/978-3486584462> , <http://doi.org/10.1007/978-3-8348-2428-8> , <https://www.isbn-international.org/978-3642354458> , <https://www.isbn-international.org/9783865811998> ;
+        <https://schema.org/comment>   "Gruppenarbeiten werden unterstützt durch eine kollaborative Dateiaustausch-Plattform (BSCW)." ;
         <https://schema.org/courseCode>
-                "GPMO" ;
+                "CourseCode" ;
         <https://schema.org/coursePrerequisites>
-                "Grundkenntnisse der Systemanalyse" ;
+                "keine" ;
         <https://schema.org/datePublished>
                 "2018-06-01" ;
         <https://schema.org/educationalAlignment>
-                <https://bmake.th-brandenburg.de/module/SWS_WIB_GPMO> , <https://bmake.th-brandenburg.de/module/Curr_WIB_GPMO> , <https://bmake.th-brandenburg.de/module/ModuleType_WIB_GPMO> , <https://bmake.th-brandenburg.de/module/Grade_WIB_GPMO> ;
+                <https://bmake.th-brandenburg.de/module/Grade_WIB_SYSA> , <https://bmake.th-brandenburg.de/module/Curr_WIB_SYSA> , <https://bmake.th-brandenburg.de/module/ModuleType_WIB_SYSA> , <https://bmake.th-brandenburg.de/module/SWS_WIB_SYSA> ;
         <https://schema.org/educationalCredentialAwarded>
                 "5" ;
         <https://schema.org/educationalUse>
-                "Dient der Vorbereitung darauf aufbauender Veranstaltungen, insbesondere bzgl. Operationalisiserung von Prozessen." ;
+                "Dient der Vorbereitung darauf aufbauender Veranstaltungen, insbesondere bzgl. Modellierung von Prozessen." ;
         <https://schema.org/hasCourseInstance>
-                <https://bmake.th-brandenburg.de/module/So18_GPMO> ;
+                <https://bmake.th-brandenburg.de/module/Wi18_SYSA> ;
         <https://schema.org/inLanguage>
-                "de" , "en" ;
+                "en" , "de" ;
         <https://schema.org/interactivityType>
-                "Studentische Präsentationen" , "Werkzeugtutorials und -präsentationen" , "Seminaristische Vorlesungen" , "Praktische Übungen und Konsultationen" , "Video-Vorlesungen" , "MC Selbsttests" , "Projektarbeit in Gruppen und Kleingruppen" ;
-        <https://schema.org/isBasedOn>  <https://bmake.th-brandenburg.de/module/WIB_SYSA> ;
+                "Gruppenarbeiten" , "begleitende Übungen mit Hausaufgaben" , "Vorlesung mit Folien" ;
         <https://schema.org/learningResourceType>
-                "Vorlesung" , "Projekt" , "Übung" ;
-        <https://schema.org/name>       "Grundlagen der Prozessmodellierung"@de , "Basics of Business Process Modeling"@en ;
+                "Vorlesung" , "Übung" ;
+        <https://schema.org/name>      "Systems Analysis"@en , "Systemanalyse"@de ;
         <https://schema.org/timeRequired>
                 "PT150H" ;
-        <https://schema.org/url>        "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/grundlagen-der-prozessmodellierung/" .
+        <https://schema.org/url>       "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/systemanalyse/" .
 
 <https://bmake.th-brandenburg.de/module/Curr_WIB_PMSK>
         a                               <https://schema.org/AlignmentObject> ;
@@ -2056,6 +2070,15 @@
         <http://www.w3.org/2000/01/rdf-schema#subClassOf>
                 <https://schema.org/DataType> .
 
+<https://bmake.th-brandenburg.de/module/WIB_INFM2>
+        a                          <https://schema.org/Course> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Informationsmanagement" ;
+        <https://schema.org/courseCode>
+                "INFM" ;
+        <https://schema.org/name>  "Information Management"@en , "Informationsmanagement"@de ;
+        <https://schema.org/url>   "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/informationsmanagement/" .
+
 <https://www.sophist.de>
         a                               <https://schema.org/Organization> ;
         <http://www.w3.org/2000/01/rdf-schema#label>
@@ -2086,49 +2109,14 @@
         <https://schema.org/honorificPrefix>
                 "Dr.-Ing. habil." .
 
-<https://bmake.th-brandenburg.de/module/WIB_PMSK>
-        a                              <https://schema.org/Course> ;
-        <http://www.w3.org/2000/01/rdf-schema#label>
-                "Projekt-Mgt & Soziale Komp." ;
-        <https://schema.org/PMSK>      "PMSK" ;
-        <https://schema.org/about>     <https://bmake.th-brandenburg.de/module/Exam_PMSK> , <https://bmake.th-brandenburg.de/module/LResults_PMSK> , <https://bmake.th-brandenburg.de/module/Content_PMSK> ;
-        <https://schema.org/accountablePerson>
-                <https://www.th-brandenburg.de/mitarbeiterseiten/fbw/andreas-johannsen> ;
-        <https://schema.org/additionalProperty>
-                <https://bmake.th-brandenburg.de/module/CompWL_PMSK> , <https://bmake.th-brandenburg.de/module/TeachingForms_PMSK> ;
-        <https://schema.org/citation>  <https://www.isbn-international.org/3763229892> , <https://www.isbn-international.org/978-3-8274-1161-7> , <https://www.isbn-international.org/978-38974949303> , <https://www.isbn-international.org/978-3499174896> , <https://www.isbn-international.org/978-3-86490-429-5> , <http://doi.org/10.1007/978-3-322-82334-2k> , <https://www.dimap.ufrn.br/~jair/ES/artigos/SpiralModelBoehm.pdf> ;
-        <https://schema.org/comment>   "Assessment-Center (Videoanalyse), Fallbeispiele aus der Unternehmenspraxis, Möglichkeit des Erwerbs des Zertifikats „Certified Professional in Project Management“ des ASQF/ISQI durch freiwillige Teilnahme an einer zusätzlichen einwöchigen Blockveranstaltung." ;
-        <https://schema.org/coursePrerequisites>
-                "keine" ;
-        <https://schema.org/datePublished>
-                "2018-06-01" ;
-        <https://schema.org/educationalAlignment>
-                <https://bmake.th-brandenburg.de/module/SWS_WIB_PMSK> , <https://bmake.th-brandenburg.de/module/Grade_WIB_PMSK> , <https://bmake.th-brandenburg.de/module/ModuleType_WIB_PMSK> , <https://bmake.th-brandenburg.de/module/Curr_WIB_PMSK> ;
-        <https://schema.org/educationalCredentialAwarded>
-                "5" ;
-        <https://schema.org/educationalUse>
-                "Dient der Vorbereitung darauf aufbauender Veranstaltungen." ;
-        <https://schema.org/hasCourseInstance>
-                <https://bmake.th-brandenburg.de/module/Wi18_PMSK> ;
-        <https://schema.org/inLanguage>
-                "de" , "en" ;
-        <https://schema.org/interactivityType>
-                "Vorlesung mit gemischten Medien (Folien, Tafelarbeit, Demos)" , "Begleitende Übungen mit Assessment Center (Videoaufzeichnungen und -Auswertungen in der Gruppe)" , "Präsentationen" , "Hausarbeit" , "Gruppenarbeit" ;
-        <https://schema.org/learningResourceType>
-                "Vorlesung" , "Übung" ;
-        <https://schema.org/name>      "Project Management and Social Competences"@en , "Projektmanagement und Soziale Kompetenzen"@de ;
-        <https://schema.org/timeRequired>
-                "PT150H" ;
-        <https://schema.org/url>       "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/projektmanagement-und-soziale-kompetenzen/" .
-
-<https://bmake.th-brandenburg.de/module/WIB_SWEN>
+<https://bmake.th-brandenburg.de/module/WIB_MGTO2>
         a                          <https://schema.org/Course> ;
         <http://www.w3.org/2000/01/rdf-schema#label>
-                "SW-Engineering" ;
+                "Management & Organisation" ;
         <https://schema.org/courseCode>
-                "SWEN" ;
-        <https://schema.org/name>  "Software Engineering"@en , "Software Engineering"@de ;
-        <https://schema.org/url>   "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/software-engineering/" .
+                "MGTO" ;
+        <https://schema.org/name>  "Management and Organization"@en , "Management und Organisation"@de ;
+        <https://schema.org/url>   "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/management-und-organisation/" .
 
 <http://purl.org/vocommons/voaf#Vocabulary>
         a       <http://www.w3.org/2002/07/owl#Class> ;
@@ -2308,6 +2296,40 @@
                 "verweist auf eine Webseite, die nähere Informationen zum Ausrichtungsrahmen enthält, z. B. auf ein Prüfungsordnungsdokument"@de , "target URL"@en ;
         <http://www.w3.org/2000/01/rdf-schema#range>
                 <https://schema.org/URL> .
+
+<https://bmake.th-brandenburg.de/module/WIB_AWIM2>
+        a                               <https://schema.org/Course> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Angewandte Wissensmodellierung" ;
+        <https://schema.org/AWIM>       "AWIM" ;
+        <https://schema.org/about>      <https://bmake.th-brandenburg.de/module/LResults_AWIM> , <https://bmake.th-brandenburg.de/module/Content_AWIM> , <https://bmake.th-brandenburg.de/module/Exam_AWIM> ;
+        <https://schema.org/accountablePerson>
+                <https://www.th-brandenburg.de/mitarbeiterseiten/fbw/vera-meister> ;
+        <https://schema.org/additionalProperty>
+                <https://bmake.th-brandenburg.de/module/CompWL_AWIM> , <https://bmake.th-brandenburg.de/module/TeachingForms_AWIM> ;
+        <https://schema.org/citation>   <https://www.isbn-international.org/978-3-446-45054-7> , <https://www.isbn-international.org/1502789647> , <http://www.omg.org/spec/CMMN/1.1/PDF> , <https://www.omg.org/spec/BPMN/2.0.2/PDF> , <https://www.w3.org/TR/rdf11-primer/> , <http://www.omg.org/spec/DMN/1.1/PDF> , <https://www.w3.org/TR/skos-reference/> ;
+        <https://schema.org/comment>    "" ;
+        <https://schema.org/datePublished>
+                "2018-06-01" ;
+        <https://schema.org/educationalAlignment>
+                <https://bmake.th-brandenburg.de/module/Grade_WIB_AWIM> , <https://bmake.th-brandenburg.de/module/ModuleType_WIB_AWIM> , <https://bmake.th-brandenburg.de/module/Curr_WIB_AWIM> , <https://bmake.th-brandenburg.de/module/SWS_WIB_AWIM> ;
+        <https://schema.org/educationalCredentialAwarded>
+                "5" ;
+        <https://schema.org/educationalUse>
+                "" ;
+        <https://schema.org/hasCourseInstance>
+                <https://bmake.th-brandenburg.de/module/So18_AWIM> ;
+        <https://schema.org/inLanguage>
+                "en" , "de" ;
+        <https://schema.org/interactivityType>
+                "Werkzeugtutorials und -präsentationen" , "Studentische Präsentationen" , "Seminaristische Vorlesungen" , "Individuelle Projektarbeit" , "Video-Vorlesungen" , "Praktische Übungen und Konsultationen" ;
+        <https://schema.org/isBasedOn>  <https://bmake.th-brandenburg.de/module/WIB_GPMO> ;
+        <https://schema.org/learningResourceType>
+                "Übung" , "Projekt" , "Vorlesung" ;
+        <https://schema.org/name>       "Angewandte Wissensmodellierung"@de , "Applied Knowledge Engineering"@en ;
+        <https://schema.org/timeRequired>
+                "PT150H" ;
+        <https://schema.org/url>        "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/wahlpflicht-i-angewandte-wissensmodellierung/" .
 
 <https://bmake.th-brandenburg.de/module/TeachingForms_AAIT>
         a                          <https://schema.org/PropertyValue> ;
