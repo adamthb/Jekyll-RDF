@@ -1,69 +1,50 @@
----
-layout: default
----
-
 <!DOCTYPE html>
+
 <html lang="de">
 
-  <head>
+<head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Template für Module">
     <meta name="author" content="Team1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Modulkatalog - Technische Hochschule Brandenburg</title>
 
-    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap  CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom fonts for this template -->
+    <!-- Schriftarten für das Template -->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-    <!-- Custom styles for this template -->
-    <link href="../css/freelancer.min.css" rel="stylesheet">
-
-    <style type="text/css">
-
-    .bg-secondary {
-    background-color: #f18400 !important;
-}
-
-.copyright {
-    background-color: #f18400 !important;
-}
-
-section{padding: 0rem 0;}
-
-</style>
+    <!-- CSS für dieses Template -->
+    <link href="../css/style.css" rel="stylesheet">
 
 </head>
 
+<body>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/module">Modulkatalog THB</a>
-      </div>
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="/module">Modulkatalog THB</a>
+        </div>
     </nav>
-<br><br>
-<br><br>
-<br><br>
+    <br><br>
+    <br><br>
+    <br><br>
 
-<section id="module">
-      <div class="container">
-        <h4 class="text-center text-uppercase text-secondary mb-0">Wirtschaftsinformatik B.Sc.</h4>
-        <hr class="star-dark mb-5">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
- 
+    <section id="module">
+        <div class="container">
+            <h4 class="text-center text-uppercase text-secondary mb-0">Wirtschaftsinformatik B.Sc.</h4>
+            <hr class="star-dark mb-5">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h5>Informationen zum Modul:</h5>
+                    <table class="table">
 
-<h5>Informationen zum Modul:</h5>
-<table class="table">
-
-    <tr>
+                        <tr>
         <th>Modul-Kennzeichen</th><td>
         {% assign tests = page.rdf | rdf_property: '<https://schema.org/courseCode>', nil, true %}
 
@@ -74,8 +55,8 @@ section{padding: 0rem 0;}
 
     <tr>
         <th>Modulbezeichnung</th><td>
-		{{ page.rdf | rdf_property: '<https://schema.org/name>','en'}} @en</br>
-		{{ page.rdf | rdf_property: '<https://schema.org/name>','de'}} @de
+        {{ page.rdf | rdf_property: '<https://schema.org/name>','en'}} @en</br>
+        {{ page.rdf | rdf_property: '<https://schema.org/name>','de'}} @de
     </td></tr>
 
     <tr>
@@ -99,11 +80,11 @@ section{padding: 0rem 0;}
             {% endcapture %}
             {% assign listelements = page.rdf | sparql_query: duration_query %}
             {% for result in listelements %}
-			{% assign n = result.duration | size %}
-			{%  assign n = n | minus: 4  %}
-			{{ result.duration | slice: n, 3 }} Jahr<br />
+            {% assign n = result.duration | size %}
+            {%  assign n = n | minus: 4  %}
+            {{ result.duration | slice: n, 3 }} Jahr<br />
             {% endfor %}
-			
+            
         </td></tr>
 
     <tr>
@@ -190,12 +171,12 @@ section{padding: 0rem 0;}
         {% assign tests = page.rdf | rdf_property: '<https://schema.org/inLanguage>', nil, true %}
 
         {% for res in tests %}
-		{% if res == 'en' %}
-		  Englisch<br />
-		{% endif %}
-		{% if res == 'de' %}
-		  Deutsch<br />
-		{% endif %}
+        {% if res == 'en' %}
+          Englisch<br />
+        {% endif %}
+        {% if res == 'de' %}
+          Deutsch<br />
+        {% endif %}
         {% endfor %}
     </td></tr>
 
@@ -223,9 +204,9 @@ section{padding: 0rem 0;}
 
             {% for res in tests %}
             <li>Gesamt: 
-				{% assign n = res | size %}
-				{%  assign n = n | minus: 4  %}
-				{{ res | slice: n, 3 }} Stunden<br /></li>
+                {% assign n = res | size %}
+                {%  assign n = n | minus: 4  %}
+                {{ res | slice: n, 3 }} Stunden<br /></li>
             {% endfor %}
 
             {% capture workload_query %}
@@ -320,7 +301,7 @@ section{padding: 0rem 0;}
             {% for result in listelements %}
             <li>{{result.listelements}}<br /></li>
             {% endfor %}
-        </td></ul>
+        </ul></td>
     </tr>
 
     <tr>
@@ -353,15 +334,15 @@ section{padding: 0rem 0;}
     </td></ul></tr>
 
     <tr>
-        <th>Literatur</th><ul>
-        <td>
+        <th>Literatur</th>
+        <td><ul>
             {% capture citation_query %}
             SELECT DISTINCT ?headline ?authorName WHERE {
             ?resourceUri <https://schema.org/citation> ?citation.
             ?citation a <https://schema.org/Book>;
-			<https://schema.org/author> ?author;
-			<https://schema.org/headline> ?headline.
-			?author <http://www.w3.org/2000/01/rdf-schema#label> ?authorName.
+            <https://schema.org/author> ?author;
+            <https://schema.org/headline> ?headline.
+            ?author <http://www.w3.org/2000/01/rdf-schema#label> ?authorName.
             }
             ORDER BY ASC(?headline)
             {% endcapture %}
@@ -369,7 +350,7 @@ section{padding: 0rem 0;}
             {% for result in listelements %}
             <li>{{result.authorName}}:<br />{{result.headline}}</li>
             {% endfor %}
-        </td></ul>
+        </ul></td>
     </tr>
 
     <tr>
@@ -382,31 +363,17 @@ section{padding: 0rem 0;}
     <td><a href="{{ page.rdf | rdf_property: '<https://schema.org/url>' }}">{{ page.rdf | rdf_property: '<https://schema.org/url>' }}</a></td>
   </tr>
 
-  
 </table>
-<br><br>
 
 </div>
 </div>
 </div>
 
-
-   <div class="copyright py-4 text-center text-white">
-      <div class="container">
+<div class="copyright py-4 text-center text-white">
+    <div class="container">
         <small>Copyright &copy; WIM EKGI @ THB - Team 1</small>
-      </div>
     </div>
+</div>
 
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="../js/freelancer.min.js"></script>
-
-
-
-     </body>
-
+</body>
 </html>
