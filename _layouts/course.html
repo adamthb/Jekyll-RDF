@@ -148,7 +148,7 @@
 
     <tr>
         <th>Autor/in</th><td>
-        {{ page.rdf | rdf_property: '<https://schema.org/accountablePerson>' }}
+        <a href="{{ page.rdf | rdf_property: '<https://schema.org/accountablePerson>' }}" target="blank">{{ page.rdf | rdf_property: '<https://schema.org/accountablePerson>' }}</a>
     </td></tr>
 
     <tr>
@@ -308,7 +308,7 @@
 
     <tr>
         <th>Inhalte</th>
-        <td>
+        <td><ol>
             {% capture listelements_query %}
             SELECT DISTINCT ?listelements WHERE {
             ?resourceUri <https://schema.org/about> ?itemlist.
@@ -321,9 +321,11 @@
             {% endcapture %}
             {% assign listelements = page.rdf | sparql_query: listelements_query %}
             {% for result in listelements %}
-            {{result.listelements}}<br />
+			{% assign n = result.listelements | size %}
+			{%  assign n = n | minus: 2  %}
+			<li>{{ result.listelements | slice: 2, n }}</li>
             {% endfor %}
-        </td>
+        </ol></td>
     </tr>
 
     <tr>
