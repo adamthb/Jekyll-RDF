@@ -337,7 +337,7 @@
 
     <tr>
         <th>Literatur</th>
-        <td><ul>
+        <td><ul class="list-unstyled">
             {% capture citation_query %}
             SELECT DISTINCT ?headline ?authorName WHERE {
             ?resourceUri <https://schema.org/citation> ?citation.
@@ -350,7 +350,7 @@
             {% endcapture %}
             {% assign listelements = page.rdf | sparql_query: citation_query %}
             {% for result in listelements %}
-            <li>{{result.authorName}}:<br />{{result.headline}}</li>
+            <li><strong>{{result.authorName}}:<br /></strong>{{result.headline}}</li>
             {% endfor %}
         </ul></td>
     </tr>
