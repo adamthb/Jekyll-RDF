@@ -83,8 +83,10 @@
             {% assign listelements = page.rdf | sparql_query: duration_query %}
             {% for result in listelements %}
             {% assign n = result.duration | size %}
-            {%  assign n = n | minus: 4  %}
-            {{ result.duration | slice: n, 3 }} Jahr<br />
+            {% assign n = n | minus: 4 %}
+			{% assign n = result.duration | slice: n, 3 %}
+			{% assign n = n | times: 12 %}
+			{{ n | round }} Monate<br />
             {% endfor %}
             
         </td></tr>
