@@ -96,11 +96,9 @@
             
                 {% capture modultyp_query %}
                 SELECT DISTINCT ?modultyp  WHERE {
-            ?resourceUri <https://schema.org/educationalAlignment> ?alignment.
+            ?resourceUri <https://bmake.th-brandenburg.de/module/eduAlignm_Curr> ?alignment.
             ?alignment a <https://schema.org/AlignmentObject>;
-            <https://schema.org/alignmentType> ?alignmentType;
-            <https://schema.org/targetName> ?modultyp.
-            FILTER (regex(?alignmentType, "Modultyp", "i")).
+            <https://schema.org/targetDescription> ?modultyp.
             }
                 {% endcapture %}
                 {% assign listelements = page.rdf | sparql_query: modultyp_query %}
@@ -173,14 +171,24 @@
     <tr>
         <th>Lehrsprache</th><td>
         {% assign tests = page.rdf | rdf_property: '<https://schema.org/inLanguage>', nil, true %}
-
-        {% for res in tests %}
-        {% if res == 'en' %}
-          Englisch<br />
-        {% endif %}
-        {% if res == 'de' %}
-          Deutsch und
-        {% endif %}
+	
+		{% assign n = tests | size | minus: 1 %}
+		{% for i in (0..n) %}
+        	{% if i < n %}
+        		{% if tests[i] == 'en' %}
+          			Englisch und
+				{% endif %}
+        		{% if tests[i] == 'de'%}
+          	  		Deutsch und
+				{% endif %}
+        	{% else %}
+        		{% if tests[i] == 'en' %}
+          			Englisch
+				{% endif %}
+        		{% if tests[i] == 'de'%}
+          	  		Deutsch
+				{% endif %}
+			{% endif %}
         {% endfor %}
     </td></tr>
 
@@ -215,11 +223,9 @@
 
             {% capture workload_query %}
             SELECT DISTINCT ?name ?value WHERE {
-            ?resourceUri <https://schema.org/additionalProperty> ?propertyvalue.
+            ?resourceUri <https://bmake.th-brandenburg.de/module/addProp_CompWL> ?propertyvalue.
             ?propertyvalue a <https://schema.org/PropertyValue>;
-            <https://schema.org/identifier> ?identifier;
             <https://schema.org/valueReference> ?valueReference.
-            FILTER regex(?identifier, "Workload", "i").
             ?valueReference a  <https://schema.org/PropertyValue>;
             <https://schema.org/name> ?name;    
             <https://schema.org/value> ?value.
@@ -238,11 +244,9 @@
         <th>Lehrform/SWS</th><td>
             {% capture sws_query %}
             SELECT DISTINCT ?swsLabel  WHERE {
-        ?resourceUri <https://schema.org/educationalAlignment> ?alignment.
+        ?resourceUri <https://bmake.th-brandenburg.de/module/eduAlignm_SWS> ?alignment.
         ?alignment a <https://schema.org/AlignmentObject>;
-        <https://schema.org/alignmentType> ?alignmentType;
         <https://schema.org/targetName> ?swsLabel.
-        FILTER (regex(?alignmentType, "SWS", "i")).
         }
             {% endcapture %}
             {% assign listelements = page.rdf | sparql_query: sws_query %}
@@ -256,11 +260,9 @@
         <td>
             {% capture listelements_query %}
             SELECT DISTINCT ?listelements WHERE {
-            ?resourceUri <https://schema.org/about> ?itemlist.
+            ?resourceUri <https://bmake.th-brandenburg.de/module/about_Exam> ?itemlist.
             ?itemlist a <https://schema.org/ItemList>;
-            <https://schema.org/name> ?name;
             <https://schema.org/itemListElement> ?listelements.
-            FILTER regex(?name, "Studien-/Prüfungsleistungen", "i").
             }
             ORDER BY ASC(?listelements)
             {% endcapture %}
@@ -275,17 +277,18 @@
         <th>Gewichtung der Note in der Gesamtnote</th><td>
                 {% capture grade_query %}
                 SELECT DISTINCT ?grade  WHERE {
-            ?resourceUri <https://schema.org/educationalAlignment> ?alignment.
+            ?resourceUri <https://bmake.th-brandenburg.de/module/eduAlignm_Grade> ?alignment.
             ?alignment a <https://schema.org/AlignmentObject>;
-            <https://schema.org/alignmentType> ?alignmentType;
             <https://schema.org/targetName> ?grade.
-            FILTER (regex(?alignmentType, "Gewichtung der Note", "i")).
             }
                 {% endcapture %}
                 {% assign listelements = page.rdf | sparql_query: grade_query %}
                 {% for result in listelements %}
-                {{result.grade}}<br />
-                {% endfor %} 
+					{% assign grades = result.grade | split: ", " %}
+					{% for member in grades %}
+					  {{ member }}<br />
+					{% endfor %}
+                {% endfor %}
     </td></tr>
 
     <tr>
@@ -293,17 +296,15 @@
         <td><ul>
             {% capture lernergebnis_query %}
             SELECT DISTINCT ?listelements WHERE {
-            ?resourceUri <https://schema.org/about> ?itemlist.
+            ?resourceUri <https://bmake.th-brandenburg.de/module/about_LResults> ?itemlist.
             ?itemlist a <https://schema.org/ItemList>;
-            <https://schema.org/identifier> ?name;
             <https://schema.org/itemListElement> ?listelements.
-            FILTER regex(?name, "Results", "i").
             }
             ORDER BY ASC(?listelements)
             {% endcapture %}
             {% assign listelements = page.rdf | sparql_query: lernergebnis_query %}
             {% for result in listelements %}
-            <li>{{result.listelements}}<br /></li><br>
+            <li>{{result.listelements}}<br /></li>
             {% endfor %}
         </ul></td>
     </tr>
@@ -313,11 +314,9 @@
         <td><ol>
             {% capture listelements_query %}
             SELECT DISTINCT ?listelements WHERE {
-            ?resourceUri <https://schema.org/about> ?itemlist.
+            ?resourceUri <https://bmake.th-brandenburg.de/module/about_Content> ?itemlist.
             ?itemlist a <https://schema.org/ItemList>;
-            <https://schema.org/name> ?name;
             <https://schema.org/itemListElement> ?listelements.
-            FILTER regex(?name, "Inhalt", "i").
             }
             ORDER BY ASC(?listelements)
             {% endcapture %}
