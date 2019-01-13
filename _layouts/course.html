@@ -147,8 +147,18 @@
     </td></tr>
 
     <tr>
-        <th>Autor/in</th><td>
-        <a href="{{ page.rdf | rdf_property: '<https://schema.org/accountablePerson>' }}" target="blank">{{ page.rdf | rdf_property: '<https://schema.org/accountablePerson>' }}</a>
+        <th>Modulverantwortlicher</th><td>
+        {% capture accountPerson_query %}
+        SELECT DISTINCT ?accountPersonName WHERE {
+        ?resourceUri <https://schema.org/accountablePerson> ?person.
+        ?person a <https://bmake.th-brandenburg.de/module/Lecturer>;
+        <http://www.w3.org/2000/01/rdf-schema#label> ?accountPersonName.
+        }
+        {% endcapture %}
+        {% assign listelements = page.rdf | sparql_query: accountPerson_query %}
+        {% for result in listelements %}
+        {{result.accountPersonName}}<br />
+        {% endfor %}
     </td></tr>
 
     <tr>
@@ -156,7 +166,9 @@
         <td>
             {% capture instructor_query %}
             SELECT DISTINCT ?instructorName WHERE {
-            ?resourceUri <https://schema.org/accountablePerson> ?instructor.
+            ?resourceUri <https://schema.org/hasCourseInstance> ?instance.
+			?instance a <https://schema.org/CourseInstance>;
+			<https://schema.org/instructor> ?instructor.
             ?instructor a <https://bmake.th-brandenburg.de/module/Lecturer>;
             <http://www.w3.org/2000/01/rdf-schema#label> ?instructorName.
             }
