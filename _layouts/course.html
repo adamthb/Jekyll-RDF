@@ -179,7 +179,7 @@
           Englisch<br />
         {% endif %}
         {% if res == 'de' %}
-          Deutsch<br />
+          Deutsch und
         {% endif %}
         {% endfor %}
     </td></tr>
@@ -207,10 +207,10 @@
         <td>{% assign tests = page.rdf | rdf_property: '<https://schema.org/timeRequired>', nil, true %}
 
             {% for res in tests %}
-            <li>Gesamt: 
+            Gesamt: 
                 {% assign n = res | size %}
                 {%  assign n = n | minus: 4  %}
-                {{ res | slice: n, 3 }} Stunden<br /></li>
+                {{ res | slice: n, 3 }} Stunden, davon:<br />
             {% endfor %}
 
             {% capture workload_query %}
@@ -303,7 +303,7 @@
             {% endcapture %}
             {% assign listelements = page.rdf | sparql_query: lernergebnis_query %}
             {% for result in listelements %}
-            <li>{{result.listelements}}<br /></li>
+            <li>{{result.listelements}}<br /></li><br>
             {% endfor %}
         </ul></td>
     </tr>
@@ -325,7 +325,7 @@
             {% for result in listelements %}
 			{% assign n = result.listelements | size %}
 			{%  assign n = n | minus: 2  %}
-			<li>{{ result.listelements | slice: 2, n }}</li>
+			<li>{{ result.listelements | slice: 2, n }}</li><br>
             {% endfor %}
         </ol></td>
     </tr>
