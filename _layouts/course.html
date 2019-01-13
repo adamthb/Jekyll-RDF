@@ -57,8 +57,8 @@
 
     <tr>
         <th>Modulbezeichnung</th><td>
-        {{ page.rdf | rdf_property: '<https://schema.org/name>','en'}} @en</br>
-        {{ page.rdf | rdf_property: '<https://schema.org/name>','de'}} @de
+        {{ page.rdf | rdf_property: '<https://schema.org/name>','en'}} (English)</br>
+        {{ page.rdf | rdf_property: '<https://schema.org/name>','de'}} (Deutsch)
     </td></tr>
 
     <tr>
@@ -85,8 +85,8 @@
             {% assign n = result.duration | size %}
             {% assign n = n | minus: 4 %}
 			{% assign n = result.duration | slice: n, 3 %}
-			{% assign n = n | times: 12 %}
-			{{ n | round }} Monate<br />
+			{% assign n = n | times: 2 %}
+			{{ n | round }} Semester<br />
             {% endfor %}
             
         </td></tr>
@@ -304,7 +304,7 @@
             {% endcapture %}
             {% assign listelements = page.rdf | sparql_query: lernergebnis_query %}
             {% for result in listelements %}
-            <li>{{result.listelements}}<br /></li>
+            <li>{{result.listelements}}<br /></li><br>
             {% endfor %}
         </ul></td>
     </tr>
@@ -353,7 +353,7 @@
             {% endcapture %}
             {% assign listelements = page.rdf | sparql_query: citation_query %}
             {% for result in listelements %}
-            <li><strong>{{result.authorName}}:<br /></strong>{{result.headline}}</li>
+            <li><strong>{{result.authorName}}:<br /></strong>{{result.headline}}</li><br>
             {% endfor %}
         </ul></td>
     </tr>
