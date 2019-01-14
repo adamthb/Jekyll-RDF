@@ -51,6 +51,11 @@
         {{ page.rdf | rdf_property: '<http://www.w3.org/2000/01/rdf-schema#label>' }}
     </td></tr>
 
+                        <tr>
+                            <th>E-Mail</th><td>
+                            <a href="mailto:{{ page.rdf | rdf_property: '<https://schema.org/email>' }}">{{ page.rdf | rdf_property: '<https://schema.org/email>' }}</a>
+                        </td></tr>
+
      <tr>
     <th>URL</th>
     <td><a href="{{ page.rdf }}" target="blank">{{ page.rdf }}</a></td>
