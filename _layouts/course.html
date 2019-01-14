@@ -149,15 +149,13 @@
     <tr>
         <th>Modulverantwortlicher</th><td>
         {% capture accountPerson_query %}
-        SELECT DISTINCT ?accountPersonName WHERE {
+        SELECT DISTINCT ?person WHERE {
         ?resourceUri <https://schema.org/accountablePerson> ?person.
-        ?person a <https://bmake.th-brandenburg.de/module/Lecturer>;
-        <http://www.w3.org/2000/01/rdf-schema#label> ?accountPersonName.
         }
         {% endcapture %}
         {% assign listelements = page.rdf | sparql_query: accountPerson_query %}
         {% for result in listelements %}
-        {{result.accountPersonName}}<br />
+		<a href="{{ result.person | remove: 'https://' | prepend: '/rdfsites/https/' }}.html">{{ result.person | rdf_property: '<http://www.w3.org/2000/01/rdf-schema#label>' }}</a><br />
         {% endfor %}
     </td></tr>
 
@@ -165,17 +163,15 @@
         <th>Dozent/in</th>
         <td>
             {% capture instructor_query %}
-            SELECT DISTINCT ?instructorName WHERE {
+            SELECT DISTINCT ?instructor WHERE {
             ?resourceUri <https://schema.org/hasCourseInstance> ?instance.
 			?instance a <https://schema.org/CourseInstance>;
 			<https://schema.org/instructor> ?instructor.
-            ?instructor a <https://bmake.th-brandenburg.de/module/Lecturer>;
-            <http://www.w3.org/2000/01/rdf-schema#label> ?instructorName.
             }
             {% endcapture %}
             {% assign listelements = page.rdf | sparql_query: instructor_query %}
             {% for result in listelements %}
-            {{result.instructorName}}<br />
+            <a href="{{ result.instructor | remove: 'https://' | prepend: '/rdfsites/https/' }}.html">{{ result.instructor | rdf_property: '<http://www.w3.org/2000/01/rdf-schema#label>' }}</a><br />
             {% endfor %}
         </td>
     </tr>

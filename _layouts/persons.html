@@ -37,7 +37,7 @@
 
 <section id="module">
       <div class="container">
-        <h4 class="text-center text-uppercase text-secondary mb-0">Wirtschaftsinformatik B.Sc.</h4>
+        <h4 class="text-center text-uppercase text-secondary mb-0">Dozenten der THB</h4>
         <hr class="star-dark mb-5">
         <div class="row">
           <div class="col-lg-8 mx-auto">
@@ -46,44 +46,25 @@
  <table class="table" id="myTable">
   <thead>
     <tr>
-      <th class="table" scope="col">Module</th>
-	  <th class="table" scope="col">Dozenten</th>
-      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Suchen..." title="Ein Modul eingeben">
+      <th class="table" scope="col">Dozenten</th>
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Nach Dozenten suchen..." title="Einen Namen eingeben">
        </tr>
   </thead>
   <tbody>
 
+
+<!-- Hier der alte Query der für Dozenten angepasst werden muss
 	
-    {% assign query = 'SELECT DISTINCT ?course
-	WHERE { 
-		?course a <https://schema.org/Course> . } ' %}
+    {% assign query = 'SELECT DISTINCT ?course WHERE { ?course a <https://schema.org/Course> . } ' %}
     {% assign resultset = page.rdf | sparql_query: query %}
       {% for result in resultset %}
-	  <tr>
-		  <td><a href="{{ result.course | remove: 'https://bmake.th-brandenburg.de' }}.html">{{ result.course | rdf_property: '<http://www.w3.org/2000/01/rdf-schema#label>' }}</a></td>
-		  
-	      {% capture instructor_query %}
-            SELECT DISTINCT ?instructor WHERE {
-            <{{ result.course }}> a <https://schema.org/Course>;
-			<https://schema.org/hasCourseInstance> ?instance.
-			?instance a <https://schema.org/CourseInstance>;
-			<https://schema.org/instructor> ?instructor.
-            ?instructor a <https://bmake.th-brandenburg.de/module/Lecturer>.
-            }
-          {% endcapture %}
-			
-	      {% assign results = page.rdf | sparql_query: instructor_query %}
-		  <td>
-	        {% for res in results %}
-			<a href="{{ res.instructor | remove: 'https://' | prepend: '/rdfsites/https/' }}.html">{{ res.instructor | rdf_property: '<http://www.w3.org/2000/01/rdf-schema#label>' }}</a><br />
-	  	  	{% endfor %}
-		  </td>
-	  </tr>
+	  <tr><td><a href="{{ result.course | remove: 'https://bmake.th-brandenburg.de' }}.html">{{ result.course | rdf_property: '<http://www.w3.org/2000/01/rdf-schema#label>' }}</a></td></tr>
 	  {% endfor %}
+
+  -->
 	
   </tbody>
 </table>
-
 </div>
         </div>
       </div>
