@@ -55,6 +55,22 @@
                             <th>E-Mail</th><td>
                             <a href="mailto:{{ page.rdf | rdf_property: '<https://schema.org/email>' }}">{{ page.rdf | rdf_property: '<https://schema.org/email>' }}</a>
                         </td></tr>
+						
+						<tr>
+						        <th>Module</th><td>
+						            {% capture module_query %}
+						            SELECT DISTINCT ?module WHERE {
+						            ?module a <https://schema.org/Course>;
+									<https://schema.org/hasCourseInstance> ?instance.
+									?instance a <https://schema.org/CourseInstance>;
+									<https://schema.org/instructor> ?resourceUri.
+						            }
+						            {% endcapture %}
+						            {% assign listelements = page.rdf | sparql_query: module_query %}
+						            {% for result in listelements %}
+						            <a href="{{ result.module | remove: 'https://bmake.th-brandenburg.de' }}.html">{{ result.module | rdf_property: '<http://www.w3.org/2000/01/rdf-schema#label>' }}</a><br />
+						            {% endfor %}
+						    </td></tr>
 
      <tr>
     <th>URL</th>
