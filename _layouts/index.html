@@ -46,8 +46,8 @@
  <table class="table" id="myTable">
   <thead>
     <tr>
-      <th class="table" scope="col">Module</th>
-	  <th class="table" scope="col">Dozenten</th>
+      <th style="width:60%;" class="table" scope="col">Module</th>
+	  <th style="width:40%;" class="table" scope="col">Dozenten</th>
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Suchen..." title="Ein Modul eingeben">
        </tr>
   </thead>
@@ -105,7 +105,7 @@ function myFunction() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
+    td = tr[i].getElementsByTagName("td")[0,1];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
