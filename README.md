@@ -46,12 +46,11 @@ jekyll_rdf:
 Außerdem gibt es die Möglichkeit, in der `_config.yml` die zu generierenden Seiten anhand einer SparQL-Query zu beschränken oder die Ressourcen den Templates zuzuordnen. Z. B. Die Seiten aller Ressourcen, die einen Typ von "https://schema.org/Course" besitzen, werden mit dem Template "course.html" erstellt.
 
 ```yaml
-   restriction: "SELECT ?resourceUri WHERE { { ?resourceUri a <https://schema.org/Course> . } UNION  { ?resourceUri a <https://schema.org/WebPage> } UNION { ?resourceUri a <https://bmake.th-brandenburg.de/module/Lecturer>.}}"
-   class_template_mappings:
-       "https://schema.org/WebPage": "index.html"
-       "https://schema.org/Course": "course.html"
-       "https://bmake.th-brandenburg.de/module/Lecturer": "person.html"
-
+restriction: "SELECT ?resourceUri WHERE { { ?resourceUri a <https://schema.org/Course> . } UNION  { ?resourceUri a <https://schema.org/WebPage> } UNION { ?resourceUri a <https://bmake.th-brandenburg.de/module/Lecturer>.}}"
+class_template_mappings:
+    "https://schema.org/WebPage": "index.html"
+    "https://schema.org/Course": "course.html"
+    "https://bmake.th-brandenburg.de/module/Lecturer": "person.html"
 ```
 
 ## Aufbau der Templates
@@ -75,10 +74,10 @@ Englische Modulbeizeichung: {{ page.rdf | rdf_property: '<https://schema.org/nam
 Da es mehrere Objekte gibt, wird ein Array zurückgegeben. Um die Werte im Array anzuzeigen, wird eine For-Schleife gebraucht.
 ```
 <ul>
-	{% assign results = page.rdf | rdf_property: '<https://schema.org/learningResourceType>', nil, true %}
-	{% for res in results %}
-	<li> {{res}}<br /></li>
-	{% endfor %}
+    {% assign results = page.rdf | rdf_property: '<https://schema.org/learningResourceType>', nil, true %}
+    {% for res in results %}
+    <li> {{res}}<br /></li>
+    {% endfor %}
 </ul>
 ```
 
@@ -87,33 +86,28 @@ Da es mehrere Objekte gibt, wird ein Array zurückgegeben. Um die Werte im Array
 Darüber hinaus gibt es eine Möglichkeit, die Ressoucen über mehrere verkettete Knoten mit SparQL abzufragen. `?resourceUri` ist hier ein Platzhalter, der später durch page.rdf.iri (IRI für die Hauptressource der Seite) ersetzt wird.
 
 ```
-	<td>
-	{% assign instructor_query = 'SELECT DISTINCT ?person WHERE {
-        ?resourceUri <https://schema.org/accountablePerson> ?person.
-        }' %}
-	{% assign resultset = page.rdf | sparql_query: instructor_query %}
-	{% for result in resultset %}
-    	{{ result.person | rdf_property: '<http://www.w3.org/2000/01/rdf-schema#label>' }}<br />
-	</td>
-	{% endfor %}
+<td>
+    {% assign instructor_query = 'SELECT DISTINCT ?person WHERE {?resourceUri <https://schema.org/accountablePerson> ?person. }' %}
+    {% assign resultset = page.rdf | sparql_query: instructor_query %}
+    {% for result in resultset %}
+    {{ result.person | rdf_property: '<http://www.w3.org/2000/01/rdf-schema#label>' }}<br />
+    {% endfor %}
+</td>
 ```
 
 oder 
 
 ```
-	<td>
+<td>
     {% capture instructor_query %}
-    	SELECT DISTINCT ?instructor WHERE {
-    			?resourceUri <https://schema.org/hasCourseInstance> ?instance.
-				?instance a <https://schema.org/CourseInstance>;
-							<https://schema.org/instructor> ?instructor.
-    }
+    SELECT DISTINCT ?instructor WHERE {?resourceUri <https://schema.org/hasCourseInstance> ?instance. ?instance a <https://schema.org/CourseInstance>; <https://schema.org/instructor> ?instructor.}
     {% endcapture %}
-	{% assign resultset = page.rdf | sparql_query: instructor_query %}
-	{% for result in resultset %}
-    	{{ result.person | rdf_property: '<http://www.w3.org/2000/01/rdf-schema#label>' }}<br />
-	</td>
-	{% endfor %}
+    
+    {% assign resultset = page.rdf | sparql_query: instructor_query %}
+    {% for result in resultset %}
+    {{ result.person | rdf_property: '<http://www.w3.org/2000/01/rdf-schema#label>' }}<br />
+    {% endfor %}
+</td>
 ```
 
 
