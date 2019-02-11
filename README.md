@@ -6,7 +6,7 @@
 
 Auf Basis der semantischen RDF-Ressourcen des Modulkatalogs im Master-Studiengang Wirtschaftsinformatik werden statische HTML-Seiten mit einer PDF-Export-Funktion mithilfe von Jekyll-RDF generiert. Der Prototyp wird im Rahmen des Moduls "Enterprise Knowledge Graph Implementation" entwickelt und ist unter <http://univera.de/FHB/EKGI_ModCat/> erreichbar.
 
-##Angewandte Technologien
+## Angewandte Technologien
 
 ### Bei Installation von Jekyll-RDF
 
