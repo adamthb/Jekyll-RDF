@@ -83,7 +83,7 @@ Da es mehrere Objekte gibt, wird ein Array zurückgegeben. Um die Werte im Array
 
 ### Ressourcen mit SparQL
 
-Darüber hinaus gibt es eine Möglichkeit, die Ressoucen über mehrere verkettete Knoten mit SparQL abzufragen. `?resourceUri` ist hier ein Platzhalter, der später durch page.rdf.iri (IRI für die Hauptressource der Seite) ersetzt wird.
+Darüber hinaus gibt es die Möglichkeit, die Ressoucen über mehrere verkettete Knoten mit SparQL abzufragen. `?resourceUri` ist hier ein Platzhalter, der später durch {{ page.rdf.iri }} (IRI für die Hauptressource der Seite) ersetzt wird.
 
 ```
 <td>
