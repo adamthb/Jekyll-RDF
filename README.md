@@ -110,6 +110,69 @@ oder
 </td>
 ```
 
+## PDF Export
+
+### Library einbinden
+
+Als erstes wird die Library von github.com/MrRio/jsPDF  (jsPDF.min.js) eingebunden werden. 
+
+```
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+```
+
+
+### PDF-Objekt erzeugen
+Also nächstes wird das PDF-Objekt erzeugt sowie das Format (p= Porträt, pt=Punkte, a4 = Seitengröße) erstellt. 
+Die ID "modulkatalog" muss auch bei der HTML Tabelle definiert werden.
+
+```
+var doc = new jsPDF('p', 'pt', 'a4');
+var elem = document.getElementById('modulkatalog');  
+var data = doc.autoTableHtmlToJson(elem);
+```
+
+### Leerzeichen entfernen
+
+Auf Grund der automatischen Erstellung der Seiten entstehen Leerzeichen im HTML Code. Diese Leerzeichen müssen für die Darstellung des PDFs entfernt bzw. ersetzt werden. 
+ 
+ ```
+  var body = JSON.stringify(data).replace(/\\t+/g, '');
+  body = body.replace(/((\\n(\s)?)+)?(\\n\s)+/g, '');
+  body = body.replace(/\s\s+/g, '\\n');
+  body = JSON.parse(body);
+```
+
+
+### Formatierung der Tabelle
+
+Hier wird die Farbe der Kopfzeile, der Abstand links, die Breite der Tabelle sowie die Schriftgröße definiert.
+Anschließend wird die Tabelle als Modulkatalog.pdf gespeichert. 
+ 
+ ```
+ doc.autoTable(body.columns, body.rows, {
+
+    headerStyles: {
+            fillColor: [241, 132, 0],
+           },
+    margin: {left: 35},
+    theme: 'grid',
+    tableWidth: 'auto',
+    fontSize: 8,
+    overflow: 'linebreak',
+    }     
+  );
+    
+  doc.save('Modulkatalog.pdf');
+}
+```
+
+### PDF Ausgabe
+Abschließend muss die PDF noch gespeichert werden, dies sollte mit einem Link oder Button erfolgen, da sonst das PDF direkt beim Seitenaufruf ausgegeben wird. 
+
+```
+  <button onclick="generatePDF()">Export als PDF</button>
+
+```
 
 
 
